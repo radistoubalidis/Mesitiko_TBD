@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OwnersController">
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="317.0" prefWidth="569.0">
+               <children>
+                  <TableView fx:id="ownersView" layoutX="20.0" layoutY="77.0" prefHeight="390.0" prefWidth="529.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="77.0">
+                    <columns>
+                      <TableColumn fx:id="idColumn" prefWidth="63.0" text="ID" />
+                      <TableColumn fx:id="fullNameColumn" prefWidth="192.0" text="ON/MO" />
+                        <TableColumn fx:id="phoneColumn" prefWidth="171.0" text="ΤΗΛΕΦΩΝΟ" />
+                        <TableColumn fx:id="numOfRealtiesColumn" prefWidth="102.0" text="ΑΡ. ΑΚΙΝΗΤΩΝ" />
+                    </columns>
+                  </TableView>
+                  <Label alignment="CENTER" layoutX="148.0" layoutY="50.0" text="ΟΙ ΠΕΛΑΤΕΣ ΤΟΥ ΚΑΤΑΣΤΗΜΑΤΟΣ" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="107.0" text="ΔΙΑΓΡΑΦΗ">
+               <VBox.margin>
+                  <Insets left="220.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="deleteError" fill="#e80d0d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.13671875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="150.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="deleteError" fill="#f81f1f" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="266.13671875">
+               <font>
+                  <Font size="21.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="135.0" right="20.0" top="70.0" />
+               </VBox.margin>
+            </Text>
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" text="ΕΙΣΑΓΩΓΗ ΠΕΛΑΤΗ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" right="40.0" top="50.0" />
+               </VBox.margin>
+            </Label>
+            <TextField promptText="id">
+               <VBox.margin>
+                  <Insets left="40.0" right="40.0" top="35.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField promptText="ΟΝ/ΜΟ">
+               <VBox.margin>
+                  <Insets left="40.0" right="40.0" top="35.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField promptText="ΤΗΛΕΦΩΝΟ">
+               <VBox.margin>
+                  <Insets left="40.0" right="40.0" top="35.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField promptText="ΑΡ. ΑΚΙΝΗΤΩΝ">
+               <VBox.margin>
+                  <Insets left="40.0" right="40.0" top="35.0" />
+               </VBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" text="ΕΙΣΑΓΩΓΗ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="60.0" top="35.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <bottom>
+      <Button fx:id="goBackButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Go Back" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="50.0" left="220.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+</BorderPane>
