@@ -1,0 +1,310 @@
+SELECTS
+-------
+
+select * from owners
+select * from customers
+select * from realties
+select * from contracts
+select * from for_sale_rent
+
+============================================================================================
+
+CREATE TABLES
+--------------
+
+CREATE OR REPLACE FUNCTION create_tables()
+RETURNS void AS
+$$
+CREATE TABLE Realties(
+Realtie_id varchar(5) not null,
+address varchar(50),
+m2 real not null,
+r_type varchar(20),
+CONSTRAINT realties_pkey PRIMARY KEY (realtie_id),
+constraint c_r_type check (r_type in ('ΜΟΝΟΚΑΤΟΙΚΙΑ','ΔΙΑΜΕΡΙΣΜΑ','ΒΙΛΛΑ','ΓΗ','ΕΠΑΓΓΕΛΜΑΤΙΚΟΣ ΧΩΡΟΣ')));
+
+CREATE TABLE Owners(
+Owner_id varchar(5) not null,
+FullName varchar(50),
+Contact_Number varchar(30) not null,
+NumOfRealties int,
+CONSTRAINT owners_pkey PRIMARY KEY (owner_id));
+
+CREATE TABLE Customers(
+Customer_id varchar(5) not null,
+FullName varchar(50),
+Contact_Number varchar(30) not null,
+CONSTRAINT customers_pkey PRIMARY KEY (customer_id));
+
+CREATE TABLE Contracts(
+Customer_id varchar(5) not null,
+Owner_id varchar(5) not null,
+Realtie_id varchar(5) not null,
+startDate Date,
+primary key (Customer_id, Owner_id, Realtie_id),
+constraint c_cid foreign key (Customer_id) references Customers on delete cascade,
+constraint c_oid foreign key (Owner_id) references Owners on delete cascade ,
+constraint c_rid foreign key (Realtie_id) references Realties on delete cascade);
+
+CREATE TABLE For_Sale_Rent(
+Realtie_id varchar(5) not null,
+Owner_id varchar(5) not null,
+contract_type varchar(5),
+constraint c_contype check (contract_type in ('RENT','SALE')),
+constraint c2_oid foreign key (Owner_id) references Owners on delete cascade ,
+constraint c2_rid foreign key (Realtie_id) references Realties on delete cascade); 
+
+$$ LANGUAGE SQL;
+
+=======================================================================================
+
+DROP TABLES
+------------
+
+CREATE OR REPLACE FUNCTION drop_tables()
+returns void AS
+$$
+drop table contracts;
+drop table customers;
+drop table for_sale_rent;
+drop table realties;
+drop table owners;
+$$ 
+LANGUAGE SQL;
+
+=======================================================================================
+
+INSERTS
+-------
+
+insert into Realties (realtie_id, address, m2, r_type) values (1100,'Αγίου Δημητρίου 64',54.3, 'ΔΙΑΜΕΡΙΣΜΑ');
+insert into Realties (realtie_id, address, m2, r_type) values (1101,'Καμάρα 24',87.2, 'ΕΠΑΓΓΕΛΜΑΤΙΚΟΣ ΧΩΡΟΣ');
+insert into Realties (realtie_id, address, m2, r_type) values (1102,'Καλαμαριάς 120',150.9, 'ΜΟΝΟΚΑΤΟΙΚΙΑ');
+insert into Realties (realtie_id, address, m2, r_type) values (1103,'Γεωργίου 23',350.3, 'ΒΙΛΛΑ');
+insert into Realties (realtie_id, address, m2, r_type) values (1104,'Τσιμισκή 5',90.3, 'ΔΙΑΜΕΡΙΣΜΑ');
+insert into Realties (realtie_id, address, m2, r_type) values (1105,'28η Οκτωβρίου 2',302.0, 'ΓΗ');
+insert into Realties (realtie_id, address, m2, r_type) values (1106,'Αγγελάκη 43',60.4, 'ΕΠΑΓΓΕΛΜΑΤΙΚΟΣ ΧΩΡΟΣ');
+
+
+//ΤΟ ΣΥΝΟΛΙΚΟ ΑΘΡΟΙΣΜΑ ΤΩΝ NUMOFREALTIES ΠΡΕΠΕΙ ΝΑ ΕΙΝΑΙ ΙΣΟ ΜΕ ΟΛΑ ΤΑ ΑΚΙΝΗΤΑ ΠΟΥ ΕΧΟΥΜΕ
+insert into Owners (owner_id, fullname, contact_number, numofrealties) values (2200,'Ανδρέας Αγγελίδης', 6945069795, 2);
+insert into Owners (owner_id, fullname, contact_number, numofrealties) values (2201,'Θεόδωρος Γεννηματάς', 6945423651, 2);
+insert into Owners (owner_id, fullname, contact_number, numofrealties) values (2202,'Άννα Γεωργίου', 6945047349, 1);
+insert into Owners (owner_id, fullname, contact_number, numofrealties) values (2203,'Σωτήρης Καραβίας', 6945835640, 2);
+
+
+//ΟΙ ΠΡΩΤΟΙ 3 ΠΕΛΑΤΕΣ ΥΠΑΡΧΟΥΝ ΗΔΗ --> ΑΡΑ ΕΧΟΥΜΕ 3 ΣΥΜΒΟΛΑΙΑ ΜΕ ΑΥΤΟΥΣ ΤΟΥΣ ΠΕΛΑΤΕΣ
+insert into Customers (customer_id, fullname, contact_number) values (3300,'Μαρία Έβερτ', 6945275732);
+insert into Customers (customer_id, fullname, contact_number) values (3301,'Κώστας Βενιζέλος', 6945793821);
+insert into Customers (customer_id, fullname, contact_number) values (3302,'Μάκης Ζάνος', 6945572631);
+
+//ΑΥΤΟΙ ΘΑ ΕΙΣΧΘΟΥΝ ΓΙΑ ΤΕΣΤΙΝΓ ΤΗΣ ΕΦΑΡΜΟΓΗΣ
+insert into Customers (customer_id, fullname, contact_number) values (3303,'Αντώνης Ελευθερίου', 6945793523);
+insert into Customers (customer_id, fullname, contact_number) values (3304,'Αντιγόνη Δελή', 6945989193);
+insert into Customers (customer_id, fullname, contact_number) values (3305,'Σμαράγδα Ασλανίδου', 6945079482);
+
+
+//ΤΑ ΣΥΜΒΟΛΑΙΑ ΔΕΝ ΘΑ ΝΑΙ ΟΣΑ ΤΑ ΣΠΙΤΙΑ ΓΙΑΤΙ ΠΡΕΠΕΙ ΝΑ ΥΠΑΡΧΟΥΝ ΚΑΠΟΙΟΑ ΣΠΙΤΙΑ ΞΕΝΟΙΚΙΑΣΤΑ
+insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3300, 2200, 1101, '2020-05-03'); 
+insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3301, 2202, 1102, '2020-01-23');
+insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3302, 2203, 1103, '2020-11-03');
+
+//ΑΥΤΑ ΤΑ ΣΥΜΒΟΛΑΙΑ ΘΑ ΕΙΣΑΧΘΟΥΝ ΓΙΑ ΤΕΣΤΙΝΓ 
+insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3303, 2203, 1100, '2020-04-19');
+insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3304, 2201, 1104, '2020-05-21');
+insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3305, 2201, 1105, '2020-09-06');
+
+
+
+insert into For_Sale_Rent (realtie_id, owner_id, contract_type) values (1105, 2200, 'SALE');
+insert into For_Sale_Rent (realtie_id, owner_id, contract_type) values (1101, 2201, 'RENT');
+insert into For_Sale_Rent (realtie_id, owner_id, contract_type) values (1104, 2203, 'RENT');
+insert into For_Sale_Rent (realtie_id, owner_id, contract_type) values (1103, 2202, 'SALE');
+insert into For_Sale_Rent (realtie_id, owner_id, contract_type) values (1102, 2203, 'RENT');
+insert into For_Sale_Rent (realtie_id, owner_id, contract_type) values (1100, 2201, 'SALE');
+insert into For_sale)Rent (realtie_id, owner_id, contract_type) values (1106, 2200, 'RENT');
+
+==================================================================================================================
+VIEWS 
+1)
+CREATE VIEW CONTRACT_NAMES AS
+SELECT cust.fullname as customer_name,ow.fullname as owner_name,con.realtie_id,con.startDate
+FROM contracts con join customers cust on(con.customer_id = cust.customer_id)
+			join owners ow on (con.owner_id = ow.owner_id);
+select * from contract_names
+
+2)
+CREATE VIEW EVERYTHING_ABOUT_REALTIES AS
+SELECT r.realtie_id,r.address,r.m2,r.r_type,ow.fullname,fsr.contract_type
+FROM realties r join for_sale_rent fsr on(r.realtie_id=fsr.realtie_id)
+		join owners ow on (fsr.owner_id = ow.owner_id);
+select * from EVERYTHING_ABOUT_REALTIES
+
+3)
+CREATE VIEW FSR_EXTENDED AS
+SELECT ow.fullname as owner_name , fsr.realtie_id, fsr.contract_type
+FROM For_sale_rent fsr join owners ow on (fsr.owner_id = ow.owner_id);
+
+SELECT * FROM FSR_EXTENDED;
+
+
+==================================================================================================================
+LogFile
+-------
+Create Log Array
+----------------
+CREATE TABLE log_ow(
+operation char(1) NOT NULL,
+stamp timestamp NOT NULL primary key,
+userid varchar(20) NOT NULL,
+owner_id character varying(5) NOT NULL,
+fullname character varying(50) NOT NULL,
+contact_number character varying(30) NOT NULL,
+numofrealties integer);
+
+Create Function Delete/Update/Insert
+------------------------------------
+CREATE OR REPLACE FUNCTION process_logow()
+RETURNS trigger AS
+$BODY$
+BEGIN
+IF (TG_OP = 'DELETE') THEN
+INSERT INTO log_ow SELECT 'D', now(), user, OLD.*;
+RETURN OLD;
+ELSIF (TG_OP = 'UPDATE') THEN
+INSERT INTO log_ow SELECT 'U', now(), user, NEW.*;
+RETURN NEW;
+ELSIF (TG_OP = 'INSERT') THEN
+INSERT INTO log_ow SELECT 'I', now(), user, NEW.*;
+RETURN NEW;
+END IF;
+RETURN NULL;
+END;
+$BODY$
+LANGUAGE plpgsql
+
+Trigger Create Owners
+---------------------
+CREATE TRIGGER
+log_ow
+AFTER INSERT OR UPDATE OR DELETE ON owners
+FOR EACH ROW EXECUTE PROCEDURE
+process_logow();
+
+==========================================================================================
+
+Functions for Insert
+-------------------
+
+Realties
+--------
+CREATE OR REPLACE FUNCTION insert_realties(varchar, varchar, real, varchar)
+RETURNS SETOF Realties AS $$
+	insert into realties values ($1,$2,$3,$4);
+	select * from realties
+$$ LANGUAGE SQL;
+
+select insert_realties('1106', 'Αγγελάκη 21', 32.7, 'ΔΙΑΜΕΡΙΣΜΑ');
+
+Owners
+------
+CREATE OR REPLACE function insert_owners(varchar, varchar, varchar, int)
+RETURNS SETOF Owners AS $$
+	insert into owners values ($1,$2,$3,$4);
+	select * from owners
+$$ LANGUAGE SQL;
+
+select insert_owners('2204', 'Άγγελος Γκιουλέ', '6945738104', 1);
+
+Customers
+---------
+CREATE OR REPLACE function insert_customers(varchar, varchar, varchar)
+RETURNS SETOF Customers AS $$
+	insert into customers values ($1,$2,$3);
+	select * from customers
+$$ LANGUAGE SQL;
+
+select insert_customers('3306', 'Μάρκος Αντωνίου', '6945867314');
+
+Contracts
+---------
+CREATE OR REPLACE function insert_contracts(varchar, varchar, varchar, date)
+RETURNS SETOF Contracts AS $$
+	insert into contracts values ($1,$2,$3,$4);
+	select * from contracts
+$$ LANGUAGE SQL;
+
+select insert_contracts('3306', '2204', '1106', '2020-04-02');
+
+For_Sale_Rent
+-------------
+CREATE OR REPLACE function insert_for_sale_rent(varchar, varchar, varchar)
+RETURNS SETOF For_Sale_Rent AS $$
+	insert into for_sale_rent values ($1,$2,$3);
+	select * from for_sale_rent
+$$ LANGUAGE SQL;
+
+select insert_for_sale_rent('1107', '2204', 'SALE');
+=====================================================================================
+Functions for Delete 
+
+
+Realties
+-------
+CREATE OR REPLACE FUNCTION delete_realties(varchar, varchar,real,varchar)
+RETURNS SETOF Realties AS $$
+    delete from realties where realtie_id=$1 and address=$2 and m2=$3 and r_type=$4;
+    select * from realties
+$$ LANGUAGE SQL;
+
+select delete_realties('1100','Αγίου Δημητρίου 64','54.3','ΔΙΑΜΕΡΙΣΜΑ');
+select insert_realties('1100','Αγίου Δημητρίου','54.3','ΔΙΑΜΕΡΙΣΜΑ');
+
+
+CREATE OR REPLACE FUNCTION delete_owners(varchar, varchar,varchar,integer)
+RETURNS SETOF Owners AS $$
+    delete from owners where owner_id=$1 and fullname=$2 and contact_number=$3 and numofrealties=$4;
+    select * from owners
+$$ LANGUAGE SQL;
+
+select delete_owners('2202','Άννα Γεωργίου','6945047349',1);
+select insert_owners('2202','Άννα Γεωργίου','6945047349',1);
+
+
+Customers
+-------
+
+CREATE OR REPLACE FUNCTION delete_customers(varchar, varchar,varchar)
+RETURNS SETOF Customers AS $$
+    delete from customers where customer_id=$1 and fullname=$2 and contact_number=$3;
+    select * from customers
+$$ LANGUAGE SQL;
+
+
+select delete_customers('3300','Μαρία Έβερτ', '6945275732');
+select insert_customers('3300','Μαρία Έβερτ', '6945275732');
+
+
+Contracts
+-------
+CREATE OR REPLACE FUNCTION delete_contracts(varchar, varchar,varchar,date)
+RETURNS SETOF Contracts AS $$
+    delete from contracts where customer_id=$1 and owner_id=$2 and realtie_id=$3 and startdate=$4;
+    select * from contracts
+$$ LANGUAGE SQL;
+
+select delete_contracts('3302','2203', '1103','2020-11-03');
+select insert_contracts('3302','2203', '1103','2020-11-03');
+
+
+For_Sale_Rent
+-------
+CREATE OR REPLACE function delete_for_sale_rent(varchar, varchar, varchar)
+RETURNS SETOF For_Sale_Rent AS $$
+    delete from for_sale_rent where realtie_id=$1 and owner_id=$2 and contract_type=$3;
+    select * from for_sale_rent
+$$ LANGUAGE SQL;
+
+select delete_for_sale_rent('1105', '2200', 'SALE');
+select insert_for_sale_rent('1105', '2200', 'SALE');
+
