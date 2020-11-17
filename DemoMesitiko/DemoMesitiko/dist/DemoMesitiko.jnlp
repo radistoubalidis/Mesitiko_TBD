@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="DemoMesitiko.jnlp">
+  <information>
+    <title>DemoMesitiko</title>
+    <vendor>Vision</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="DemoMesitiko.jar" size="7563" download="eager" />
+    <jar href="lib\postgresql-8.3-603.jdbc4.jar" size="474746" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="sample.Main"  name="DemoMesitiko" />
+  <update check="always"/>
+</jnlp>
