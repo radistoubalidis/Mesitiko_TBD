@@ -15,6 +15,8 @@ public class Contracts {
     }
 
 
+
+
     public StringProperty customerNameProperty() {
         return customerName;
     }

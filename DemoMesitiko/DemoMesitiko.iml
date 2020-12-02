@@ -34,5 +34,14 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="postgresql-8.3-603.jdbc4" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/19.0.0/annotations-19.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

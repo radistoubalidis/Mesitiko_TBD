@@ -40,17 +40,17 @@
                   <Insets left="22.0" top="30.0" />
                </VBox.margin>
             </Label>
-            <TextField promptText="id">
+            <TextField fx:id="idColumnInput" promptText="id">
                <VBox.margin>
                   <Insets left="15.0" right="15.0" top="15.0" />
                </VBox.margin>
             </TextField>
-            <TextField promptText="ON/MO">
+            <TextField fx:id="fullNameColumnInput" promptText="ON/MO">
                <VBox.margin>
                   <Insets left="15.0" right="15.0" top="45.0" />
                </VBox.margin>
             </TextField>
-            <TextField promptText="ΤΗΛΕΦΩΝΟ">
+            <TextField fx:id="contactColumnInput" promptText="ΤΗΛΕΦΩΝΟ">
                <VBox.margin>
                   <Insets left="15.0" right="15.0" top="45.0" />
                </VBox.margin>
@@ -63,6 +63,14 @@
                   <Insets left="50.0" top="40.0" />
                </VBox.margin>
             </Button>
+            <Text fx:id="insertError" fill="#51ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="225.13671875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="35.0" />
+               </VBox.margin>
+            </Text>
          </children>
       </VBox>
    </left>
@@ -98,7 +106,7 @@
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="26.0" prefWidth="174.0" GridPane.columnIndex="4" />
-                        <Text fx:id="deleteError" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="311.0" GridPane.columnIndex="2">
+                        <Text fx:id="deleteError" fill="#04ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="294.13671875" GridPane.rowIndex="1">
                            <font>
                               <Font size="18.0" />
                            </font>

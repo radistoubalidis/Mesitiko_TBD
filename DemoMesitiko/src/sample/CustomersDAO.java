@@ -52,4 +52,43 @@ public class CustomersDAO {
 
     }
 
+
+    public static boolean insertCustomer(String [] pedia) throws ClassNotFoundException, SQLException {
+        String query = "select * from insert_customers('"+pedia[0]+"','"+pedia[1]+"','"+pedia[2]+"')";
+        boolean returnState=false;
+        Class.forName(driverClassName);
+        dbConnection = DriverManager.getConnection(url,username,passwd);
+        try {
+            statement = dbConnection.createStatement();
+            rs = statement.executeQuery(query);
+            if(rs.rowUpdated())    returnState = true;
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return returnState;
+
+    }
+
+    public static boolean deleteCustomer(Customers selectedItem){
+        String customer_id = selectedItem.getIdProperty().get();
+        String name = selectedItem.getNameProperty().get();
+        String contact = selectedItem.getPhoneProperty().get();
+        String query = "select * from delete_customers('"+customer_id+"','"+name+"','"+contact+"')";
+        boolean returnState = false ;
+
+        try {
+            statement = dbConnection.createStatement();
+            rs = statement.executeQuery(query);
+            returnState = true ;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return returnState;
+    }
+
+
 }

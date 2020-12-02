@@ -9,6 +9,8 @@ public class Realties {
     private StringProperty idProperty,addressProperty,r_typeProperty;
     private FloatProperty m2Property;
 
+
+
     public Realties(){
         this.idProperty = new SimpleStringProperty();
         this.addressProperty = new SimpleStringProperty();
@@ -17,6 +19,14 @@ public class Realties {
     }
 
 
+    public boolean isEmpty(){
+        boolean result=true;
+        if(this.getIdProperty().equals(null) ) return false;
+        if(this.getAddressProperty().equals(null)  ) return false;
+        if(this.getM2Property().equals(null) ) return false;
+        if(this.getR_typeProperty().equals(null) ) return false;
+        return result;
+    }
 
     public StringProperty getIdProperty() {
         return idProperty;
@@ -50,5 +60,9 @@ public class Realties {
         this.r_typeProperty.set(r_typeProperty);
     }
 
+
+    public String toString() {
+        return idProperty+","+addressProperty+","+m2Property+","+r_typeProperty;
+    }
 
 }

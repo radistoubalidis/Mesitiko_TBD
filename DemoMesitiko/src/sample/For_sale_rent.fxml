@@ -3,13 +3,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.For_sale_rentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.For_sale_rentController">
    <top>
       <AnchorPane prefHeight="59.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
@@ -28,7 +30,7 @@
       </AnchorPane>
    </bottom>
    <left>
-      <AnchorPane prefHeight="352.0" prefWidth="834.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="308.0" prefWidth="708.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="200.0" left="20.0" right="50.0" top="100.0" />
          </BorderPane.margin>
@@ -43,4 +45,50 @@
          </children>
       </AnchorPane>
    </left>
+   <center>
+      <VBox prefHeight="569.0" prefWidth="218.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets right="35.0" />
+         </BorderPane.margin>
+         <children>
+            <RadioButton fx:id="filterByRent" mnemonicParsing="false" text="RENT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="50.0" top="125.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="filterBySale" mnemonicParsing="false" text="SALE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="50.0" top="35.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="diathesima" mnemonicParsing="false" prefHeight="42.0" prefWidth="151.0" text="ΔΙΑΘΕΣΙΜΑ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="50.0" top="35.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="deleteFilters" mnemonicParsing="false" text="NO FILTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="50.0" top="35.0" />
+               </VBox.margin>
+            </RadioButton>
+            <Label fx:id="selectedFilter" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="15.0" right="15.0" top="35.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>

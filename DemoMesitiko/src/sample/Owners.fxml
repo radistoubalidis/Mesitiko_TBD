@@ -41,20 +41,12 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Text fx:id="deleteError" fill="#e80d0d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.13671875">
+            <Text fx:id="deleteError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.13671875">
                <font>
                   <Font size="18.0" />
                </font>
                <VBox.margin>
                   <Insets left="150.0" top="20.0" />
-               </VBox.margin>
-            </Text>
-            <Text fx:id="deleteError" fill="#f81f1f" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="266.13671875">
-               <font>
-                  <Font size="21.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="20.0" left="135.0" right="20.0" top="70.0" />
                </VBox.margin>
             </Text>
          </children>
@@ -71,27 +63,27 @@
                   <Insets left="40.0" right="40.0" top="50.0" />
                </VBox.margin>
             </Label>
-            <TextField promptText="id">
+            <TextField fx:id="idColumnInput" promptText="id">
                <VBox.margin>
                   <Insets left="40.0" right="40.0" top="35.0" />
                </VBox.margin>
             </TextField>
-            <TextField promptText="ΟΝ/ΜΟ">
+            <TextField fx:id="nameColumnInput" promptText="ΟΝ/ΜΟ">
                <VBox.margin>
                   <Insets left="40.0" right="40.0" top="35.0" />
                </VBox.margin>
             </TextField>
-            <TextField promptText="ΤΗΛΕΦΩΝΟ">
+            <TextField fx:id="contactNumberColumnInput" promptText="ΤΗΛΕΦΩΝΟ">
                <VBox.margin>
                   <Insets left="40.0" right="40.0" top="35.0" />
                </VBox.margin>
             </TextField>
-            <TextField promptText="ΑΡ. ΑΚΙΝΗΤΩΝ">
+            <TextField fx:id="numOfRealtiesColumnInput" promptText="ΑΡ. ΑΚΙΝΗΤΩΝ">
                <VBox.margin>
                   <Insets left="40.0" right="40.0" top="35.0" />
                </VBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" text="ΕΙΣΑΓΩΓΗ">
+            <Button fx:id="insertButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" text="ΕΙΣΑΓΩΓΗ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -99,6 +91,11 @@
                   <Insets left="60.0" top="35.0" />
                </VBox.margin>
             </Button>
+            <Text fx:id="insertError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="224.13671875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </VBox>
    </left>

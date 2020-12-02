@@ -50,4 +50,10 @@ public class Owners {
     public void setNumOfRealties(int numOfRealties) {
         this.numOfRealties.set(numOfRealties);
     }
+
+
+    public String toString () {
+        return this.id.get() + "," + this.fullName.get() + "," + this.phone.get() + "," + this.numOfRealties.get();
+    }
+
 }

@@ -50,5 +50,92 @@ public class For_sale_rentDAO {
         }
     }
 
+    public static ObservableList<For_sale_rent> filterBy(String epilogh) throws SQLException,ClassNotFoundException {
+        if (epilogh.equals("RENT")) {
+            try {
+                String query = "Select * from FSR_EXTENDED where contract_type='RENT'";
+                Class.forName(driverClassName);
+                dbConnection = DriverManager.getConnection(url, username, passwd);
+                statement = dbConnection.createStatement();
+                rs = statement.executeQuery(query);
+                ObservableList fsrList = FXCollections.observableArrayList();
+                while (rs.next()) {
+                    For_sale_rent fsr = new For_sale_rent();
+                    fsr.setOwnerName(rs.getString(1));
+                    fsr.setRealtieId(rs.getString(2));
+                    fsr.setContractType(rs.getString(3));
+                    fsrList.add(fsr);
+                }
+                return fsrList;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                throw ex;
+            }
+        } else if (epilogh.equals("SALE")) {
+            try {
+                String query = "Select * from FSR_EXTENDED where contract_type='SALE'";
+                Class.forName(driverClassName);
+                dbConnection = DriverManager.getConnection(url, username, passwd);
+                statement = dbConnection.createStatement();
+                rs = statement.executeQuery(query);
+                ObservableList fsrList = FXCollections.observableArrayList();
+                while (rs.next()) {
+                    For_sale_rent fsr = new For_sale_rent();
+                    fsr.setOwnerName(rs.getString(1));
+                    fsr.setRealtieId(rs.getString(2));
+                    fsr.setContractType(rs.getString(3));
+                    fsrList.add(fsr);
+                }
+                return fsrList;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw e;
+            }
+        } else if (epilogh.equals("")) {
+            try {
+                Class.forName(driverClassName);
+                dbConnection = DriverManager.getConnection(url, username, passwd);
+                statement = dbConnection.createStatement();
+                rs = statement.executeQuery("Select * from FSR_EXTENDED");
+                ObservableList fsrList = FXCollections.observableArrayList();
+                while (rs.next()) {
+                    For_sale_rent fsr = new For_sale_rent();
+                    fsr.setOwnerName(rs.getString(1));
+                    fsr.setRealtieId(rs.getString(2));
+                    fsr.setContractType(rs.getString(3));
+                    fsrList.add(fsr);
+                }
+                return fsrList;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw e;
+            }
+        } else {
+            try {
+                Class.forName(driverClassName);
+                dbConnection = DriverManager.getConnection(url, username, passwd);
+                statement = dbConnection.createStatement();
+                rs = statement.executeQuery("select * " +
+                        "from FSR_EXTENDED " +
+                        "where realtie_id in (select realtie_id from contracts)");
+                ObservableList fsrList = FXCollections.observableArrayList();
+                while (rs.next()) {
+                    For_sale_rent fsr = new For_sale_rent();
+                    fsr.setOwnerName(rs.getString(1));
+                    fsr.setRealtieId(rs.getString(2));
+                    fsr.setContractType(rs.getString(3));
+                    fsrList.add(fsr);
+                }
+                return fsrList;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw e;
+            }
+        }
+    }
 
 }
+
+
+
+

@@ -57,4 +57,46 @@ public class OwnersDAO {
         }
     }
 
+
+    public static boolean insertOwner(String [] pedia,int numOfRealties) throws ClassNotFoundException, SQLException {
+        boolean returnState = false;
+        String query = "select * from insert_owners('"+pedia[0]+"','"+pedia[1]+"','"+pedia[2]+"','"+numOfRealties+"')" ;
+        Class.forName(driverClassName);
+        dbConnection = DriverManager.getConnection(url,username,passwd);
+        try {
+            statement = dbConnection.createStatement();
+            rs = statement.executeQuery(query);
+            returnState = true;
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return returnState;
+    }
+
+    public static boolean deleteOwner(Owners selectedItem){
+        String owner_id = selectedItem.idProperty().get();
+        String name = selectedItem.fullNameProperty().get();
+        String number = selectedItem.phoneProperty().get();
+        int numOfrealties = selectedItem.numOfRealtiesProperty().get();
+        boolean returnState = false;
+        String query = "select * from delete_owners('"+owner_id+"','"+name+"','"+number+"','"+numOfrealties+"')";
+        try {
+            statement = dbConnection.createStatement();
+            rs = statement.executeQuery(query);
+            returnState = true ;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return returnState;
+
+    }
+
+
+
+
+
 }

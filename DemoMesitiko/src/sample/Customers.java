@@ -39,4 +39,9 @@ public class Customers {
     public void setPhoneProperty(String phoneProperty) {
         this.phoneProperty.set(phoneProperty);
     }
+
+
+    public String toString(){
+        return this.getIdProperty().get()+","+this.getNameProperty().get()+","+this.getPhoneProperty();
+    }
 }

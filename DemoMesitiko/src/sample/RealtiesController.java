@@ -43,10 +43,7 @@ public class RealtiesController {
 
         @FXML
         private void initialize()throws Exception{
-                idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
-                addressColumn.setCellValueFactory(cellData -> cellData.getValue().getAddressProperty());
-                m2Column.setCellValueFactory(cellData -> cellData.getValue().getM2Property().asObject());
-                r_typeColumn.setCellValueFactory(cellData -> cellData.getValue().getR_typeProperty());
+                setRealiesViewCellData();
                 ObservableList realtiesList = RealtiesDAO.getAllRecords();
                 populateTable(realtiesList);
         }
@@ -55,17 +52,102 @@ public class RealtiesController {
                 realtiesView.setItems(realtiesList);
         }
 
-        public void getInitilizeMehod() throws Exception {
-                initialize();
-        }
 
 
         public boolean insert(String [] pedia,float m2) throws SQLException, ClassNotFoundException {
                 boolean returnState =  RealtiesDAO.insertRealtie(pedia,m2);
-                realtiesView.refresh();
+                setRealiesViewCellData();
+                ObservableList realtiesList = RealtiesDAO.getAllRecords();
+                populateTable(realtiesList);
                 return returnState;
         }
 
+
+
+        public boolean delete (Realties selectedItem) throws SQLException, ClassNotFoundException {
+                boolean returnState = RealtiesDAO.deleteRealtie(selectedItem);
+                //System.out.println(selectedItem);
+                setRealiesViewCellData();
+                ObservableList realtiesList = RealtiesDAO.getAllRecords();
+                populateTable(realtiesList);
+                return returnState;
+        }
+
+
+
+        public void setRealiesViewCellData() {
+                idColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty());
+                addressColumn.setCellValueFactory(cellData -> cellData.getValue().getAddressProperty());
+                m2Column.setCellValueFactory(cellData -> cellData.getValue().getM2Property().asObject());
+                r_typeColumn.setCellValueFactory(cellData -> cellData.getValue().getR_typeProperty());
+        }
+
+
+
+
+        public void FilterBy(String pedio) throws SQLException, ClassNotFoundException {
+              ObservableList realtiesList = RealtiesDAO.filterBy(pedio);
+                setRealiesViewCellData();
+                populateTable(realtiesList);
+
+        }
+
+
+
+        @FXML
+        private RadioButton filterByDiamerisma ;
+
+        public RadioButton getFilterByDiamerismata() {
+                return filterByDiamerisma;
+        }
+
+        @FXML
+        private RadioButton filterByMonokatoikia;
+
+        public RadioButton getFilterByMonokatoikia() {
+                return filterByMonokatoikia;
+        }
+
+        @FXML
+        private RadioButton filterByVilla ;
+
+        public RadioButton getFilterByVilla() {
+                return filterByVilla;
+        }
+
+        @FXML
+        private RadioButton filterByEpaggelmatikosXwros;
+
+        public RadioButton getFilterByEpaggelmatikosXwros() {
+                return filterByEpaggelmatikosXwros;
+        }
+
+        @FXML
+        private RadioButton filterByGh;
+
+        public RadioButton getFilterByGh() {
+                return filterByGh;
+        }
+
+        private ToggleGroup filters = new ToggleGroup();
+
+        public ToggleGroup getFilters() {
+                return filters;
+        }
+
+        @FXML
+        private Label selectedFilter;
+
+        public Label getFilterSelected() {
+                return selectedFilter;
+        }
+
+        @FXML
+        private RadioButton deleteFilters;
+
+        public RadioButton getDeleteFilters() {
+                return deleteFilters;
+        }
 
         @FXML
         private Button insertRealtie;
@@ -73,6 +155,7 @@ public class RealtiesController {
         public Button getInsertRealtie() {
                 return insertRealtie;
         }
+
 
         @FXML
         private Button goBackButton;
