@@ -23,7 +23,7 @@ public class ContractsDAO {
     static ResultSet rs = null;
 
     public static ObservableList<Contracts> getAllRecords() throws ClassNotFoundException, SQLException {
-        String sql = "select * from contract_names";
+        String sql = "select * from displayCon()";
         try{
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -135,12 +135,13 @@ public class ContractsDAO {
             rs = statement.executeQuery("select * from findcustomer('"+name+"')");
             ResultSetMetaData rsMetadata = rs.getMetaData();
             System.out.println(rsMetadata.getColumnCount());
-            while (rs.next()) {
-                cust.setIdProperty(rs.getString(1));
-                cust.setNameProperty(rs.getString(2));
-                cust.setPhoneProperty(rs.getString(3));
-            }
-            return cust;
+                while (rs.next()) {
+                    cust.setIdProperty(rs.getString(1));
+                    cust.setNameProperty(rs.getString(2));
+                    cust.setPhoneProperty(rs.getString(3));
+                }
+                return cust;
+
         }catch (SQLException ex) {
             ex.printStackTrace();
             throw ex;

@@ -16,7 +16,7 @@ public class OwnersDAO {
     static ResultSet rs = null;
 
     public static ObservableList<Owners> getAllRecords() throws ClassNotFoundException,SQLException {
-        String sql = "select * from owners";
+        String sql = "select * from displayOw()";
 
         try
         {

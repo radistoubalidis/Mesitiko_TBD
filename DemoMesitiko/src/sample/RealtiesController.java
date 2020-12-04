@@ -38,8 +38,11 @@ public class RealtiesController {
         }
 
         @FXML
-        private Label insertMessage;
-        public Label getInsertMessage() {return insertMessage;}
+        private Text insertMessage;
+
+        public Text getInsertMessage() {
+                return insertMessage;
+        }
 
         @FXML
         private void initialize()throws Exception{

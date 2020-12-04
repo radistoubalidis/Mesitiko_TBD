@@ -67,7 +67,8 @@ public class OwnersController {
         return deleteError;
     }
 
-    @FXML Text insertError ;
+    @FXML
+    private Text insertError ;
 
     public Text getInsertError() {
         return insertError;

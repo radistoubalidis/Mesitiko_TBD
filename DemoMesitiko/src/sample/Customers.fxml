@@ -18,11 +18,11 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CustomersController">
    <center>
-      <TableView fx:id="customersView" prefHeight="318.0" prefWidth="513.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="customersView" prefHeight="180.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="106.0" text="ID" />
-          <TableColumn fx:id="nameColumn" prefWidth="217.0" text="ΟΝ/ΜΟ" />
-            <TableColumn fx:id="phoneColumn" minWidth="0.0" prefWidth="188.0" text="ΤΗΛΕΦΩΝΟ" />
+          <TableColumn fx:id="nameColumn" prefWidth="218.0" text="ΟΝ/ΜΟ" />
+            <TableColumn fx:id="phoneColumn" minWidth="0.0" prefWidth="148.0" text="ΤΗΛΕΦΩΝΟ" />
         </columns>
          <BorderPane.margin>
             <Insets bottom="200.0" top="20.0" />
@@ -60,10 +60,10 @@
                   <Font size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="50.0" top="40.0" />
+                  <Insets left="70.0" top="40.0" />
                </VBox.margin>
             </Button>
-            <Text fx:id="insertError" fill="#51ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="225.13671875">
+            <Text fx:id="insertError" fill="#51ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="238.13671875">
                <font>
                   <Font size="18.0" />
                </font>
@@ -98,15 +98,15 @@
                      <children>
                         <AnchorPane>
                            <children>
-                              <Button fx:id="deleteButton" layoutX="52.0" layoutY="14.0" mnemonicParsing="false" text="ΔΙΑΓΡΑΦΗ">
+                              <Button fx:id="deleteButton" layoutX="27.0" layoutY="17.0" mnemonicParsing="false" text="ΔΙΑΓΡΑΦΗ">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="26.0" prefWidth="174.0" GridPane.columnIndex="4" />
-                        <Text fx:id="deleteError" fill="#04ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="294.13671875" GridPane.rowIndex="1">
+                        <AnchorPane prefHeight="67.0" prefWidth="185.0" GridPane.columnIndex="4" />
+                        <Text fx:id="deleteError" fill="#04ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="319.13671875" GridPane.columnIndex="3">
                            <font>
                               <Font size="18.0" />
                            </font>

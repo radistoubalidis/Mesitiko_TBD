@@ -6,24 +6,22 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.lang.*;
+import javafx.util.Duration;
+import javafx.animation.*;
 
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.concurrent.TimeUnit;
+
 
 public class Main extends Application {
 
@@ -48,9 +46,12 @@ public class Main extends Application {
 
 
         //load menu page file
+        //load menu page file
         FXMLLoader myPage = new FXMLLoader(getClass().getResource("myPage.fxml"));
         Parent myPageRoot = myPage.load();
         myPageScene = new Scene(myPageRoot);
+        String css = getClass().getResource("style.css").toExternalForm();
+        myPageScene.getStylesheets().add(css);
 
 
         //load realties page file
@@ -341,11 +342,20 @@ public class Main extends Application {
 
         try {
             boolean result = realtiesCntrl.insert(pedia,m2_real);
-            if (result)
-                realtiesCntrl.getInsertMessage().setText("Η ΕΓΓΡΑΦΗ ΟΛΟΚΛΗΡΩΘΗΚΕ ΜΕ ΕΠΙΤΥΧΙΑ!");
+            if (result) {
+                realtiesCntrl.getNewRealtieId().setText("");
+                realtiesCntrl.getNewRealtieAddress().setText("");
+                realtiesCntrl.getNewRealtieM2().setText("");
+                realtiesCntrl.getNewRealtieRtype().setText("");
+
+                Text message = realtiesCntrl.getInsertMessage();
+                makeTextFade(message);
+            }
             else {
+                realtiesCntrl.getInsertMessage().setStyle("-fx-background-color:red");
                 realtiesCntrl.getInsertMessage().setText("Η ΕΓΓΡΑΦΗ ΔΕΝ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ ΠΑΡΑΚΑΛΩ ΠΡΟΣΠΑΘΕΙΣΤΕ ΞΑΝΑ!");
-                realtiesCntrl.getInsertMessage().setStyle("-fx-background-color:#A91101");
+                Text message = realtiesCntrl.getInsertMessage();
+                makeTextFade(message);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -362,12 +372,15 @@ public class Main extends Application {
         try {
             boolean result = realtiesCntrl.delete(selectedItem);
             if (result) {
-
-                realtiesCntrl.getDeleteError().setText("Η ΔΙΑΓΡΑΦΗ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ !");
+                Text message = realtiesCntrl.getDeleteError();
+                message.setText("Η ΕΓΓΡΑΦΗ ΔΙΑΓΡΑΦΤΗΚΕ ΜΕ ΕΠΙΤΥΧΙΑ!");
+                makeTextFade(message);
 
             }else {
                 realtiesCntrl.getDeleteError().setStyle(" -fx-background-color : #A91101 ");
                 realtiesCntrl.getDeleteError().setText("ΕΠΙΛΕΞΤΕ ΜΙΑ ΓΡΑΜΜΗ ΓΙΑ ΔΙΑΓΡΑΦΗ");
+                Text message = realtiesCntrl.getDeleteError();
+                makeTextFade(message);
 
             }
         } catch (SQLException throwables) {
@@ -387,10 +400,18 @@ public class Main extends Application {
         try{
             boolean result = contractsCntrl.insert(customerName,ownerName,realtie_id,str_date);
             if(result){
+                contractsCntrl.getCustomerNameInput().setText("");
+                contractsCntrl.getOwnerNameInput().setText("");
+                contractsCntrl.getRealtie_idNameInput().setText("");
+                contractsCntrl.getDateInput().setText("");
                 contractsCntrl.getSqlError().setText("ΤΟ ΣΥΜΒΟΛΑΙΟ ΚΑΤΑΧΩΡΗΘΗΚΕ ΜΕ ΕΠΙΤΥΧΙΑ!");
+                Text message = contractsCntrl.getSqlError();
+                makeTextFade(message);
             }else {
                 contractsCntrl.getSqlError().setStyle("-fx-background-color:#A91101");
                 contractsCntrl.getSqlError().setText("ΤΟ ΣΥΜΒΟΛΑΙΟ ΔΕΝ ΚΑΤΑΧΩΡΗΘΗΚΕ!\n ΚΑΠΟΙΟ ΣΤΟΙΧΕΙΟ ΕΙΝΑΙ ΛΑΘΟΣ");
+                Text message =  contractsCntrl.getSqlError();
+                makeTextFade(message);
             }
         }catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -405,10 +426,14 @@ public class Main extends Application {
         try{
             boolean result = contractsCntrl.delete(selectedItem);
             if(result){
-                contractsCntrl.getSqlError().setText("ΤΟ ΣΥΜΒΟΛΑΙΟ ΔΙΑΓΡΑΦΤΗΚΕ ΕΠΙΤΥΧΩΣ");
+                Text message = contractsCntrl.getSqlError();
+                message.setText("ΤΟ ΣΥΜΒΟΛΑΙΟ ΔΙΑΓΡΑΦΤΗΚΕ ΕΠΟΤΥΧΩ΅!");
+                makeTextFade(message);
             }else{
                 contractsCntrl.getSqlError().setStyle(" -fx-background-color : #A91101 ");
                 contractsCntrl.getSqlError().setText("ΕΠΙΛΕΞΤΕ ΜΙΑ ΓΡΑΜΜΗ ΓΙΑ ΔΙΑΓΡΑΦΗ");
+                Text message = contractsCntrl.getSqlError();
+                makeTextFade(message);
             }
         }catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -426,10 +451,18 @@ public class Main extends Application {
         try{
             boolean result = customersCntrl.insert(pedia);
             if (result) {
+                customersCntrl.getContactColumnInput().setText("");
+                customersCntrl.getFullNameColumnInput().setText("");
+                customersCntrl.getIdColumnInput().setText("");
+
                 customersCntrl.getInsertError().setText("Η ΝΕΑ ΕΓΓΡΑΦΗ ΑΠΟΘΗΚΕΥΤΗΚΕ ΜΕ ΕΠΙΤΥΧΙΑ");
+                Text message = customersCntrl.getInsertError();
+                makeTextFade(message);
             }else {
                 customersCntrl.getInsertError().setStyle("-fx-background-color:#A91101");
                 customersCntrl.getInsertError().setText("ΠΑΡΑΚΑΛΩ ΕΙΣΑΓΕΤΑΙ ΣΩΣΤΑ ΤΑ ΣΤΟΙΧΕΙΑ");
+                Text message = customersCntrl.getInsertError();
+                makeTextFade(message);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -446,10 +479,15 @@ public class Main extends Application {
             boolean result = customersCntrl.delete(selectedItem);
 
             if (result) {
-                customersCntrl.getDeleteError().setText("H ΔΙΑΓΡΑΦΗ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ");
+                Text message = customersCntrl.getDeleteError();
+                message.setText("H ΔΙΑΓΡΑΦΗ ΠΕΛΑΤΗ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ!");
+                makeTextFade(message);
+
             } else {
                 customersCntrl.getDeleteError().setStyle("-fx-background-color : #A91101 ");
                 customersCntrl.getDeleteError().setText("ΠΑΡΑΚΑΛΩ ΔΙΑΛΕΞΤΕ ΓΡΑΜΜΗ ΓΙΑ ΔΙΑΓΡΑΦΗ");
+                Text message = customersCntrl.getDeleteError();
+                makeTextFade(message);
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -470,10 +508,19 @@ public class Main extends Application {
         try{
              boolean result = ownersCntrl.insert(pedia,numOfRealties);
              if(result){
+                 ownersCntrl.getContactNumberColumnInput().setText("");
+                 ownersCntrl.getNameColumnInput().setText("");
+                 ownersCntrl.getIdColumnInput().setText("");
+                 ownersCntrl.getNumOfRealtiesColumnInput().setText("");
+
                  ownersCntrl.getInsertError().setText("H ΝΕΑ ΕΓΓΡΑΦΗ ΑΠΟΘΗΚΕΥΤΗΚΕ ΜΕ ΕΠΙΤΥΧΙΑ!");
+                 Text message = ownersCntrl.getInsertError();
+                 makeTextFade(message);
              }else {
                  ownersCntrl.getInsertError().setStyle("-fx-background-color : #A91101");
                  ownersCntrl.getInsertError().setText("ΠΑΡΑΚΑΛΩ ΣΥΜΠΛΗΡΩΣΤΕ ΤΑ ΣΤΟΙΧΕΙΑ ΣΩΣΤΑ");
+                 Text message = ownersCntrl.getInsertError();
+                 makeTextFade(message);
              }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -491,10 +538,14 @@ public class Main extends Application {
             boolean result = ownersCntrl.delete(selectedItem);
             if(result){
                 ownersCntrl.getDeleteError().setText("H ΔΙΑΓΡΑΦΗ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ");
+                Text message = ownersCntrl.getDeleteError();
+                makeTextFade(message);
             }
             else{
                 ownersCntrl.getDeleteError().setStyle("-fx-background-color : #A91101 ");
                 ownersCntrl.getDeleteError().setText("ΠΑΡΑΚΑΛΩ ΔΙΑΛΕΞΤΕ ΓΡΑΜΜΗ ΓΙΑ ΔΙΑΓΡΑΦΗ");
+                Text message = ownersCntrl.getDeleteError();
+                makeTextFade(message);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -502,6 +553,25 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
+    }
+
+
+
+    private static FadeTransition createFader(Node node) {
+        FadeTransition fade = new FadeTransition(Duration.seconds(4), node);
+        fade.setFromValue(1);
+        fade.setToValue(0);
+
+        return fade;
+    }
+
+    private static void  makeTextFade(Text message){
+        FadeTransition fader = createFader(message);
+        SequentialTransition seqT = new SequentialTransition(
+                message,
+                fader
+        ) ;
+        seqT.play();
     }
 
 }

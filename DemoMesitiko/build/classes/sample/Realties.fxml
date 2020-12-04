@@ -27,7 +27,7 @@
               </columns>
             </TableView>
             <Button fx:id="deleteButton" layoutX="2.0" layoutY="573.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" text="ΔΙΑΓΡΑΦΗ ΑΚΙΝΗΤΟΥ" />
-            <Text fx:id="deleteError" fill="#1deb19" layoutX="203.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="243.13671875">
+            <Text fx:id="deleteError" fill="#1deb19" layoutX="227.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="395.13671875">
                <font>
                   <Font size="18.0" />
                </font>
@@ -67,10 +67,11 @@
                </children>
             </HBox>
             <Button fx:id="insertRealtie" layoutX="291.0" layoutY="48.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="ΕΙΣΑΓΩΓΗ" />
-            <Label fx:id="insertMessage" layoutX="514.0" layoutY="49.0" prefHeight="34.0" prefWidth="398.0" textFill="#00ff40">
+            <Text fx:id="insertMessage" fill="#00ff0d" layoutX="570.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="406.13671875">
                <font>
-                  <Font size="13.0" />
-               </font></Label>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
          <BorderPane.margin>
             <Insets left="50.0" right="50.0" />

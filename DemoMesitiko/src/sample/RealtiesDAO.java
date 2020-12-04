@@ -23,7 +23,7 @@ public class RealtiesDAO {
 
 
     public static ObservableList<Realties> getAllRecords() throws ClassNotFoundException, SQLException {
-        String sql = "select * from Realties";
+        String sql = "select * from displayR()";
         try{
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);

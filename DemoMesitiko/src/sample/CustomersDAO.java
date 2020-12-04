@@ -16,7 +16,7 @@ public class CustomersDAO {
     static ResultSet rs = null;
 
     public static ObservableList<Customers> getAllRecords() throws ClassNotFoundException, SQLException {
-        String sql = "select * from Customers";
+        String sql = "select * from displayCust()";
         try{
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -61,7 +61,7 @@ public class CustomersDAO {
         try {
             statement = dbConnection.createStatement();
             rs = statement.executeQuery(query);
-            if(rs.rowUpdated())    returnState = true;
+            returnState = true;
         }catch (SQLException ex) {
             ex.printStackTrace();
         } catch (Exception e) {

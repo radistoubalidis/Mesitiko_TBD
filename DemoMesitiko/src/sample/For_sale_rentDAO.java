@@ -17,7 +17,7 @@ public class For_sale_rentDAO {
 
 
     public static ObservableList<For_sale_rent> getAllRecords() throws ClassNotFoundException , SQLException {
-        String sql  = "select * from FSR_EXTENDED";
+        String sql  = "select * from displayFSR()";
         try{
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -117,7 +117,7 @@ public class For_sale_rentDAO {
                 statement = dbConnection.createStatement();
                 rs = statement.executeQuery("select * " +
                         "from FSR_EXTENDED " +
-                        "where realtie_id in (select realtie_id from contracts)");
+                        "where realtie_id not in (select realtie_id from contracts)");
                 ObservableList fsrList = FXCollections.observableArrayList();
                 while (rs.next()) {
                     For_sale_rent fsr = new For_sale_rent();
