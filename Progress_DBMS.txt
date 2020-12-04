@@ -308,3 +308,38 @@ $$ LANGUAGE SQL;
 select delete_for_sale_rent('1105', '2200', 'SALE');
 select insert_for_sale_rent('1105', '2200', 'SALE');
 
+=================================================================================================
+Functions findItem
+
+
+findcustomer
+CREATE OR REPLACE FUNCTION findcustomer(character varying)
+  RETURNS SETOF customers AS
+$BODY$
+	select * 
+	from customers where fullName = $1
+$BODY$
+  LANGUAGE sql VOLATILE
+  
+  
+findowner
+CREATE OR REPLACE FUNCTION findowner(character varying)
+  RETURNS SETOF owners AS
+$BODY$
+	select * from owners
+	where fullname=$1;
+$BODY$
+  LANGUAGE sql VOLATILE
+
+findrealtie
+CREATE OR REPLACE FUNCTION findrealtie(character varying)
+  RETURNS SETOF realties AS
+$BODY$
+    select * from realties where realtie_id=$1
+$BODY$
+  LANGUAGE sql VOLATILE
+ 
+================================================================================
+
+
+
