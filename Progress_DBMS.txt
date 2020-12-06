@@ -105,9 +105,12 @@ insert into Customers (customer_id, fullname, contact_number) values (3305,'Σμ
 
 
 //ΤΑ ΣΥΜΒΟΛΑΙΑ ΔΕΝ ΘΑ ΝΑΙ ΟΣΑ ΤΑ ΣΠΙΤΙΑ ΓΙΑΤΙ ΠΡΕΠΕΙ ΝΑ ΥΠΑΡΧΟΥΝ ΚΑΠΟΙΟΑ ΣΠΙΤΙΑ ΞΕΝΟΙΚΙΑΣΤΑ
-insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3300, 2200, 1101, '2020-05-03'); 
-insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3301, 2202, 1102, '2020-01-23');
-insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3302, 2203, 1103, '2020-11-03');
+insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3300, 2201, 1101, '2012-09-11');
+			πελτατης :Μαρία Έβερτ, owner : Θεόδωρος Γεννηματάς
+insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3301, 2203, 1102, '2015-01-23');
+			πελατης : Κώστας Βενιζέλος owner: Σωτήρης Καραβίας
+insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3302, 2202, 1103, '2019-11-03');
+			πελατης : Μάκης Ζάνος owner: Άννα Γεωργίου
 
 //ΑΥΤΑ ΤΑ ΣΥΜΒΟΛΑΙΑ ΘΑ ΕΙΣΑΧΘΟΥΝ ΓΙΑ ΤΕΣΤΙΝΓ 
 insert into Contracts (customer_id, owner_id, realtie_id, startDate) values (3303, 2203, 1100, '2020-04-19');
