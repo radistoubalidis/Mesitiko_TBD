@@ -6,104 +6,137 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OwnersController">
-   <center>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <AnchorPane prefHeight="317.0" prefWidth="569.0">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OwnersController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="970.0" AnchorPane.leftAnchor="0.0">
+         <center>
+            <VBox prefHeight="639.0" prefWidth="446.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="ownersView" layoutX="20.0" layoutY="77.0" prefHeight="390.0" prefWidth="529.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="77.0">
-                    <columns>
-                      <TableColumn fx:id="idColumn" prefWidth="63.0" text="ID" />
-                      <TableColumn fx:id="fullNameColumn" prefWidth="192.0" text="ON/MO" />
-                        <TableColumn fx:id="phoneColumn" prefWidth="171.0" text="ΤΗΛΕΦΩΝΟ" />
-                        <TableColumn fx:id="numOfRealtiesColumn" prefWidth="102.0" text="ΑΡ. ΑΚΙΝΗΤΩΝ" />
-                    </columns>
-                  </TableView>
-                  <Label alignment="CENTER" layoutX="148.0" layoutY="50.0" text="ΟΙ ΠΕΛΑΤΕΣ ΤΟΥ ΚΑΤΑΣΤΗΜΑΤΟΣ" AnchorPane.topAnchor="50.0">
+                  <AnchorPane prefHeight="314.0" prefWidth="553.0">
+                     <children>
+                        <TableView fx:id="ownersView" layoutX="53.0" layoutY="39.0" prefHeight="267.0" prefWidth="542.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="39.0">
+                           <columns>
+                              <TableColumn fx:id="idColumn" prefWidth="63.0" text="ID" />
+                              <TableColumn fx:id="fullNameColumn" prefWidth="192.0" text="Full Name" />
+                              <TableColumn fx:id="phoneColumn" prefWidth="171.0" text="Phone Number" />
+                              <TableColumn fx:id="numOfRealtiesColumn" prefWidth="115.00004882812505" text="Realtie's Number" />
+                           </columns>
+                        </TableView>
+                        <Text fx:id="insertError" fill="#1dff00" layoutX="53.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="447.13671875">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <Text fx:id="deleteError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="402.73681640625">
                      <font>
                         <Font size="18.0" />
                      </font>
-                  </Label>
+                     <VBox.margin>
+                        <Insets left="45.0" top="20.0" />
+                     </VBox.margin>
+                  </Text>
+                  <AnchorPane prefHeight="286.0" prefWidth="545.0">
+                     <children>
+                        <Button fx:id="deleteButton" alignment="CENTER_RIGHT" layoutX="492.0" layoutY="215.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #9C2B27;" text="Delete" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="idColumnInput" layoutX="45.0" layoutY="15.0" prefHeight="30.0" prefWidth="535.0" promptText="ID" />
+                        <TextField fx:id="nameColumnInput" layoutX="45.0" layoutY="58.0" prefHeight="30.0" prefWidth="535.0" promptText="Full Name" />
+                        <Button fx:id="insertButton" alignment="CENTER_RIGHT" layoutX="359.0" layoutY="215.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #9C2B27;" text="Add Data" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="numOfRealtiesColumnInput" layoutX="45.0" layoutY="151.0" prefHeight="30.0" prefWidth="535.0" promptText="Realtie's Number" />
+                        <Label layoutX="365.0" layoutY="215.0" prefHeight="11.0" prefWidth="0.0" text="+" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="495.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/delete.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="contactNumberColumnInput" layoutX="44.0" layoutY="105.0" prefHeight="30.0" prefWidth="535.0" promptText="Phone-Number" />
+                        <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="14.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/name.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/id.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="26.0" fitWidth="21.0" layoutX="19.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/phone-number.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="14.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/realties.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
-            </AnchorPane>
-            <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="107.0" text="ΔΙΑΓΡΑΦΗ">
-               <VBox.margin>
-                  <Insets left="220.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Text fx:id="deleteError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="259.13671875">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="150.0" top="20.0" />
-               </VBox.margin>
-            </Text>
-         </children>
-      </VBox>
-   </center>
-   <left>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" text="ΕΙΣΑΓΩΓΗ ΠΕΛΑΤΗ">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="40.0" right="40.0" top="50.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="idColumnInput" promptText="id">
-               <VBox.margin>
-                  <Insets left="40.0" right="40.0" top="35.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="nameColumnInput" promptText="ΟΝ/ΜΟ">
-               <VBox.margin>
-                  <Insets left="40.0" right="40.0" top="35.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="contactNumberColumnInput" promptText="ΤΗΛΕΦΩΝΟ">
-               <VBox.margin>
-                  <Insets left="40.0" right="40.0" top="35.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="numOfRealtiesColumnInput" promptText="ΑΡ. ΑΚΙΝΗΤΩΝ">
-               <VBox.margin>
-                  <Insets left="40.0" right="40.0" top="35.0" />
-               </VBox.margin>
-            </TextField>
-            <Button fx:id="insertButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" text="ΕΙΣΑΓΩΓΗ">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="60.0" top="35.0" />
-               </VBox.margin>
-            </Button>
-            <Text fx:id="insertError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="224.13671875">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-         </children>
-      </VBox>
-   </left>
-   <bottom>
-      <Button fx:id="goBackButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Go Back" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="50.0" left="220.0" />
-         </BorderPane.margin>
-      </Button>
-   </bottom>
-</BorderPane>
+            </VBox>
+         </center>
+         <left>
+            <VBox prefHeight="600.0" prefWidth="335.0" style="-fx-background-color: #9C2B27;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="671.0" prefWidth="335.0">
+                     <children>
+                        <ImageView fitHeight="72.0" fitWidth="108.0" layoutX="123.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="23.0" layoutY="97.0" text="Atlas Realty Estate" textFill="#d0cccc">
+                           <font>
+                              <Font name="Agency FB" size="36.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="54.0" fitWidth="61.0" layoutX="41.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/owner.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="110.0" layoutY="202.0" prefHeight="37.0" prefWidth="87.0" text="Owners" textFill="#d0cccc">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="goBackButton" alignment="CENTER_RIGHT" layoutX="24.0" layoutY="569.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="89.0" style="-fx-background-color: #800000;" text="Back" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="31.0" layoutY="578.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/back.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

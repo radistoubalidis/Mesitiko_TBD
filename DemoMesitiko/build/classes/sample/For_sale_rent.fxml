@@ -6,89 +6,111 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.For_sale_rentController">
-   <top>
-      <AnchorPane prefHeight="59.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" layoutX="247.0" prefHeight="76.0" prefWidth="307.0" text="ΠΡΟΣ ΠΩΛΗΣΗ/ΕΝΟΙΚΙΑΣΗ">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-   </top>
-   <bottom>
-      <AnchorPane prefHeight="55.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="goBackButton" layoutX="632.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Go Back" />
-         </children>
-      </AnchorPane>
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="939.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.For_sale_rentController">
    <left>
-      <AnchorPane prefHeight="308.0" prefWidth="708.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="610.0" prefWidth="335.0" style="-fx-background-color: #9C2B27;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="200.0" left="20.0" right="50.0" top="100.0" />
+            <Insets />
          </BorderPane.margin>
          <children>
-            <TableView fx:id="for_sale_rentView" layoutX="119.0" layoutY="7.0" prefHeight="301.0" prefWidth="492.0">
-              <columns>
-                <TableColumn fx:id="ownerNameColumn" prefWidth="244.0" text="ΟΝ/ΜΟ ΙΔΙΟΚΤΗΤΗ" />
-                <TableColumn fx:id="realtieIdColumn" minWidth="0.0" prefWidth="141.0" text="ΚΩΔ. ΑΚΙΝΗΤΟΥ" />
-                  <TableColumn fx:id="contractTypeColumn" prefWidth="106.0" text="ΠΡΟΣ" />
-              </columns>
-            </TableView>
+            <Pane prefHeight="570.0" prefWidth="342.0">
+               <children>
+                  <ImageView fitHeight="72.0" fitWidth="108.0" layoutX="127.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="26.0" layoutY="99.0" text="Atlas Realty Estate" textFill="#d0cccc">
+                     <font>
+                        <Font name="Agency FB" size="36.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="54.0" fitWidth="61.0" layoutX="14.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/realties.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="104.0" layoutY="204.0" prefHeight="37.0" prefWidth="188.0" text="Available Realties" textFill="#d0cccc">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="goBackButton" alignment="CENTER_RIGHT" layoutX="41.0" layoutY="486.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="89.0" style="-fx-background-color: #800000;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="51.0" layoutY="496.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/back.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </left>
    <center>
-      <VBox prefHeight="569.0" prefWidth="218.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="610.0" prefWidth="609.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets right="35.0" />
          </BorderPane.margin>
          <children>
-            <RadioButton fx:id="filterByRent" mnemonicParsing="false" text="RENT">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="50.0" top="125.0" />
-               </VBox.margin>
-            </RadioButton>
-            <RadioButton fx:id="filterBySale" mnemonicParsing="false" text="SALE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="50.0" top="35.0" />
-               </VBox.margin>
-            </RadioButton>
-            <RadioButton fx:id="diathesima" mnemonicParsing="false" prefHeight="42.0" prefWidth="151.0" text="ΔΙΑΘΕΣΙΜΑ">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="50.0" top="35.0" />
-               </VBox.margin>
-            </RadioButton>
-            <RadioButton fx:id="deleteFilters" mnemonicParsing="false" text="NO FILTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="50.0" top="35.0" />
-               </VBox.margin>
-            </RadioButton>
-            <Label fx:id="selectedFilter" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="15.0" right="15.0" top="35.0" />
-               </VBox.margin>
-            </Label>
+            <VBox layoutX="27.0" prefHeight="570.0" prefWidth="555.0">
+               <children>
+                  <TableView fx:id="for_sale_rentView" prefHeight="252.0" prefWidth="555.0">
+                     <columns>
+                        <TableColumn fx:id="ownerNameColumn" prefWidth="244.0" text="Owner's Full Name" />
+                        <TableColumn fx:id="realtieIdColumn" minWidth="0.0" prefWidth="141.0" text="Realtie's Number" />
+                        <TableColumn fx:id="contractTypeColumn" prefWidth="168.79997558593755" text="To" />
+                     </columns>
+                  </TableView>
+                  <AnchorPane prefHeight="240.0" prefWidth="555.0">
+                     <children>
+                        <RadioButton fx:id="diathesima" layoutX="14.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="151.0" text="ΔΙΑΘΕΣΙΜΑ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="deleteFilters" layoutX="14.0" layoutY="137.0" mnemonicParsing="false" text="NO FILTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="filterBySale" layoutX="14.0" layoutY="54.0" mnemonicParsing="false" text="SALE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="filterByRent" layoutX="14.0" layoutY="95.0" mnemonicParsing="false" text="RENT">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </RadioButton>
+                        <Label fx:id="selectedFilter" layoutX="205.0" layoutY="40.0" prefHeight="17.0" prefWidth="290.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </center>
 </BorderPane>

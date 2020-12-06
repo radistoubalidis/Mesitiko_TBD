@@ -6,117 +6,122 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CustomersController">
-   <center>
-      <TableView fx:id="customersView" prefHeight="180.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="idColumn" prefWidth="106.0" text="ID" />
-          <TableColumn fx:id="nameColumn" prefWidth="218.0" text="ΟΝ/ΜΟ" />
-            <TableColumn fx:id="phoneColumn" minWidth="0.0" prefWidth="148.0" text="ΤΗΛΕΦΩΝΟ" />
-        </columns>
-         <BorderPane.margin>
-            <Insets bottom="200.0" top="20.0" />
-         </BorderPane.margin>
-      </TableView>
-   </center>
-   <left>
-      <VBox prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" text="ΕΙΣΑΓΩΓΗ ΠΕΛΑΤΗ ">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="22.0" top="30.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="idColumnInput" promptText="id">
-               <VBox.margin>
-                  <Insets left="15.0" right="15.0" top="15.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="fullNameColumnInput" promptText="ON/MO">
-               <VBox.margin>
-                  <Insets left="15.0" right="15.0" top="45.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="contactColumnInput" promptText="ΤΗΛΕΦΩΝΟ">
-               <VBox.margin>
-                  <Insets left="15.0" right="15.0" top="45.0" />
-               </VBox.margin>
-            </TextField>
-            <Button fx:id="insertButton" mnemonicParsing="false" text="ΕΙΣΑΓΩΓΗ">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="70.0" top="40.0" />
-               </VBox.margin>
-            </Button>
-            <Text fx:id="insertError" fill="#51ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="238.13671875">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="35.0" />
-               </VBox.margin>
-            </Text>
-         </children>
-      </VBox>
-   </left>
-   <right>
-      <Region prefHeight="400.0" prefWidth="87.0" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <AnchorPane layoutX="-3.0" layoutY="1.0">
-               <children>
-                  <GridPane prefHeight="199.0" prefWidth="523.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <AnchorPane>
-                           <children>
-                              <Button fx:id="deleteButton" layoutX="27.0" layoutY="17.0" mnemonicParsing="false" text="ΔΙΑΓΡΑΦΗ">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="67.0" prefWidth="185.0" GridPane.columnIndex="4" />
-                        <Text fx:id="deleteError" fill="#04ff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="319.13671875" GridPane.columnIndex="3">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CustomersController">
+    <center>
+        <AnchorPane prefHeight="574.0" prefWidth="635.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <children>
+                <TableView fx:id="customersView" layoutX="70.0" layoutY="44.0" prefHeight="238.0" prefWidth="502.0">
+                    <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="106.0" text="ID" />
+                        <TableColumn fx:id="nameColumn" prefWidth="218.0" text="ΟΝ/ΜΟ" />
+                        <TableColumn fx:id="phoneColumn" minWidth="0.0" prefWidth="176.79999389648435" text="ΤΗΛΕΦΩΝΟ" />
+                    </columns>
+                </TableView>
+                <AnchorPane layoutY="238.0" prefHeight="290.0" prefWidth="635.0">
+                    <children>
+                        <Text fx:id="deleteError" fill="#04ff00" layoutX="315.20001220703125" layoutY="41.023826599121094" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="319.13671875">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
                         </Text>
-                     </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
-            <Button fx:id="goBackButton" layoutX="658.0" layoutY="145.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0" text="Go Back" />
-         </children>
-      </AnchorPane>
-   </bottom>
+                        <Button fx:id="insertButton" alignment="CENTER_RIGHT" layoutX="374.0" layoutY="250.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="106.0" style="-fx-background-color: #9C2B27;" text="Add Data" textFill="WHITE">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                        <TextField fx:id="fullNameColumnInput" layoutX="105.0" layoutY="117.0" prefHeight="30.0" prefWidth="466.0" promptText="Full Name" />
+                        <Text fx:id="insertError" fill="#51ff00" layoutX="104.80000305175781" layoutY="41.023826599121094" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="238.13671875">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Text>
+                        <Button fx:id="deleteButton" alignment="CENTER_RIGHT" layoutX="489.0" layoutY="250.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #9C2B27;" text="Delete" textFill="WHITE">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                        <TextField fx:id="contactColumnInput" layoutX="105.0" layoutY="158.0" prefHeight="30.0" prefWidth="466.0" promptText="Phone-Number" />
+                        <TextField fx:id="idColumnInput" layoutX="105.0" layoutY="78.0" prefHeight="30.0" prefWidth="466.0" promptText="ID" />
+                        <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="491.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/delete.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="375.0" layoutY="250.0" prefHeight="30.0" prefWidth="18.0" text="+" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="26.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="70.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/id.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="70.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/name.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="22.0" layoutX="74.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/phone-number.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </center>
+    <left>
+        <VBox prefHeight="671.0" prefWidth="335.0" BorderPane.alignment="CENTER">
+            <children>
+                <Pane prefHeight="611.0" prefWidth="335.0" style="-fx-background-color: #9C2B27;">
+                    <children>
+                        <ImageView fitHeight="72.0" fitWidth="108.0" layoutX="127.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="23.0" layoutY="98.0" text="Atlas Realty Estate" textFill="#d0cccc">
+                            <font>
+                                <Font name="Agency FB" size="36.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="goBackButton" alignment="CENTER_RIGHT" layoutX="38.0" layoutY="479.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="89.0" style="-fx-background-color: #800000;" text="Back" textFill="WHITE">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                        <ImageView fitHeight="54.0" fitWidth="61.0" layoutX="30.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/customers.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="127.0" layoutY="197.0" prefHeight="37.0" prefWidth="118.0" text="Customers" textFill="#d0cccc">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="45.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/back.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+            </children>
+        </VBox>
+    </left>
 </BorderPane>

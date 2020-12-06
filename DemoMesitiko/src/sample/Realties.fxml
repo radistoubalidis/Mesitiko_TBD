@@ -7,150 +7,159 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RealtiesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RealtiesController">
    <center>
-      <AnchorPane BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="699.0" prefWidth="630.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="realtiesView" layoutX="70.0" layoutY="32.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="32.0">
-              <columns>
-                <TableColumn fx:id="idColumn" prefWidth="89.0" text="ID" />
-                <TableColumn fx:id="addressColumn" prefWidth="220.0" text="ΔΙΕΥΘΥΝΣΗ" />
-                  <TableColumn fx:id="m2Column" minWidth="7.0" prefWidth="87.0" text="Τ.Μ" />
-                  <TableColumn fx:id="r_typeColumn" minWidth="0.0" prefWidth="164.0" text="ΤΥΠΟΣ" />
-              </columns>
+            <TableView fx:id="realtiesView" layoutX="13.0" layoutY="25.0" prefHeight="250.0" prefWidth="580.0" AnchorPane.bottomAnchor="407.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="25.0">
+               <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="89.0" text="ID" />
+                  <TableColumn fx:id="addressColumn" prefWidth="250.40000915527344" text="Address" />
+                  <TableColumn fx:id="m2Column" minWidth="7.0" prefWidth="71.99993896484375" text="Sq. M" />
+                  <TableColumn fx:id="r_typeColumn" minWidth="0.0" prefWidth="238.80002441406248" text="Type" />
+               </columns>
             </TableView>
-            <Button fx:id="deleteButton" layoutX="2.0" layoutY="573.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" text="ΔΙΑΓΡΑΦΗ ΑΚΙΝΗΤΟΥ" />
-            <Text fx:id="deleteError" fill="#1deb19" layoutX="227.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="395.13671875">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
+            <AnchorPane layoutX="-2.0" layoutY="295.0" prefHeight="387.0" prefWidth="680.0">
+               <children>
+                  <TextField fx:id="newRealtieId" layoutX="48.0" layoutY="15.0" prefHeight="30.0" prefWidth="620.0" promptText="ID" />
+                  <TextField fx:id="newRealtieM2" layoutX="48.0" layoutY="94.0" prefHeight="30.0" prefWidth="620.0" promptText="Square Meters" />
+                  <TextField fx:id="newRealtieAddress" layoutX="48.0" layoutY="134.0" prefHeight="30.0" prefWidth="620.0" promptText="Address" />
+                  <Button fx:id="deleteButton" alignment="CENTER_RIGHT" layoutX="579.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #9C2B27;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <TextField fx:id="newRealtieRtype" layoutX="48.0" layoutY="54.0" prefHeight="30.0" prefWidth="620.0" promptText="Type (ΔΙΑΜΕΡΙΣΜΑ, ΒΙΛΛΑ, etc)" />
+                  <Button fx:id="insertRealtie" alignment="CENTER_RIGHT" layoutX="453.0" layoutY="174.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #9C2B27;" text="Add Data" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <RadioButton fx:id="filterByEpaggelmatikosXwros" layoutX="21.0" layoutY="244.0" mnemonicParsing="false" text="ΕΠΑΓΓΕΛΜΑΤΙΚΟΙ ΧΩΡΟΙ ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="filterByDiamerisma" layoutX="21.0" layoutY="326.0" mnemonicParsing="false" text="ΔΙΑΜΕΡΙΣΜΑΤΑ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="deleteFilters" layoutX="310.0" layoutY="326.0" mnemonicParsing="false" text="NO FILTERS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="filterByVilla" layoutX="310.0" layoutY="244.0" mnemonicParsing="false" text="ΒΙΛΛΕΣ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="filterByMonokatoikia" layoutX="21.0" layoutY="286.0" mnemonicParsing="false" text="ΜΟΝΟΚΑΤΟΙΚΙΕΣ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <Text fx:id="insertMessage" fill="#00ff0d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="406.13671875" AnchorPane.leftAnchor="20.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="deleteError" fill="#1deb19" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="395.13671875" AnchorPane.leftAnchor="20.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <RadioButton fx:id="filterByGh" layoutX="310.0" layoutY="286.0" mnemonicParsing="false" text="ΓΗ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/id.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="36.0" layoutX="14.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/location.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="19.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tm.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="17.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/type.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="458.0" layoutY="174.0" prefHeight="30.0" prefWidth="18.0" text="+" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="580.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/delete.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="selectedFilter" contentDisplay="CENTER" layoutX="426.0" layoutY="273.0" prefHeight="27.0" prefWidth="247.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <HBox layoutX="51.0" layoutY="163.0" prefHeight="26.0" prefWidth="56.0" />
          </children>
          <BorderPane.margin>
-            <Insets left="50.0" right="50.0" />
+            <Insets />
          </BorderPane.margin>
       </AnchorPane>
    </center>
-   <top>
-      <AnchorPane prefHeight="96.0" prefWidth="753.0" BorderPane.alignment="CENTER">
+   <left>
+      <Pane prefHeight="671.0" prefWidth="335.0" style="-fx-background-color: #9C2B27;" BorderPane.alignment="CENTER">
          <children>
-            <HBox layoutX="1.0" layoutY="11.0" prefHeight="26.0" prefWidth="699.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="151.0" text="ΕΙΣΑΓΩΓΗ ΑΚΙΝΗΤΟΥ:">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="newRealtieId" promptText="id">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin></TextField>
-                  <TextField fx:id="newRealtieAddress" promptText="διεύθυνση">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin></TextField>
-                  <TextField fx:id="newRealtieM2" promptText="τ.μ.">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin></TextField>
-                  <TextField fx:id="newRealtieRtype" promptText="τύπος">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin></TextField>
-               </children>
-            </HBox>
-            <Button fx:id="insertRealtie" layoutX="291.0" layoutY="48.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="ΕΙΣΑΓΩΓΗ" />
-            <Text fx:id="insertMessage" fill="#00ff0d" layoutX="570.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="406.13671875">
+            <Button fx:id="goBackButton" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="593.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="89.0" style="-fx-background-color: #800000;" text="Back" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
-            </Text>
-         </children>
-         <BorderPane.margin>
-            <Insets left="50.0" right="50.0" />
-         </BorderPane.margin>
-      </AnchorPane>
-   </top>
-   <bottom>
-      <AnchorPane BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="goBackButton" layoutX="514.0" layoutY="31.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="146.0" text="Go Back" />
-         </children>
-         <BorderPane.margin>
-            <Insets left="50.0" right="50.0" />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="20.0" />
-         </padding>
-      </AnchorPane>
-   </bottom>
-   <right>
-      <VBox prefHeight="611.0" prefWidth="398.0" BorderPane.alignment="CENTER">
-         <children>
-            <RadioButton fx:id="filterByDiamerisma" mnemonicParsing="false" text="ΔΙΑΜΕΡΙΣΜΑΤΑ">
-               <VBox.margin>
-                  <Insets left="50.0" top="80.0" />
-               </VBox.margin>
+            </Button>
+            <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="47.0" layoutY="602.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/back.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="72.0" fitWidth="108.0" layoutX="117.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="19.0" layoutY="84.0" prefHeight="53.0" prefWidth="298.0" text="Atlas Realty Estate" textFill="#d0cccc">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Agency FB" size="36.0" />
                </font>
-            </RadioButton>
-            <RadioButton fx:id="filterByMonokatoikia" mnemonicParsing="false" text="ΜΟΝΟΚΑΤΟΙΚΙΕΣ">
-               <VBox.margin>
-                  <Insets left="50.0" top="35.0" />
-               </VBox.margin>
+            </Label>
+            <ImageView fitHeight="54.0" fitWidth="61.0" layoutX="40.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/realties.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="109.0" layoutY="189.0" prefHeight="37.0" prefWidth="87.0" text="Realties" textFill="#d0cccc">
                <font>
-                  <Font size="18.0" />
+                  <Font size="24.0" />
                </font>
-            </RadioButton>
-            <RadioButton fx:id="filterByVilla" mnemonicParsing="false" text="ΒΙΛΛΕΣ">
-               <VBox.margin>
-                  <Insets left="50.0" top="35.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="filterByEpaggelmatikosXwros" mnemonicParsing="false" text="ΕΠΑΓΓΕΛΜΑΤΙΚΟΙ ΧΩΡΟΙ ">
-               <VBox.margin>
-                  <Insets left="50.0" top="35.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="filterByGh" mnemonicParsing="false" text="ΓΗ">
-               <VBox.margin>
-                  <Insets left="50.0" top="35.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="deleteFilters" mnemonicParsing="false" text="NO FILTERS">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="50.0" top="35.0" />
-               </VBox.margin>
-            </RadioButton>
-            <Label fx:id="selectedFilter" contentDisplay="CENTER" prefHeight="35.0" prefWidth="250.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="50.0" top="35.0" />
-               </VBox.margin>
             </Label>
          </children>
-      </VBox>
-   </right>
+      </Pane>
+   </left>
 </BorderPane>
