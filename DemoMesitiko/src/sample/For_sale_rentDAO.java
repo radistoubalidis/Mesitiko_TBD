@@ -134,6 +134,109 @@ public class For_sale_rentDAO {
         }
     }
 
+
+    public static boolean insertFSR(String ownerName,String realtie_id,String contractType) throws SQLException, ClassNotFoundException {
+        Owners ow = findOwner(ownerName);
+        Realties real = findRealtie(realtie_id);
+        boolean returnState = false;
+
+        if(ow != null && real != null){
+            String sql = "select * from insert_for_sale_rent('"+real.getIdProperty().get()+"','"+ow.idProperty().get()+"','"+contractType+"')";
+
+            Class.forName(driverClassName);
+            dbConnection = DriverManager.getConnection(url,username,passwd);
+            try {
+                statement = dbConnection.createStatement();
+                rs = statement.executeQuery(sql);
+                returnState = true;
+            }catch (SQLException ex) {
+                ex.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return returnState;
+
+        }else return false;
+    }
+
+
+    public static boolean deleteFSR(For_sale_rent selectedItem) throws SQLException, ClassNotFoundException {
+        Owners ow = findOwner(selectedItem.ownerNameProperty().get());
+        Realties real = findRealtie(selectedItem.realtieIdProperty().get());
+        boolean returnState = false;
+
+        if(ow != null && real != null){
+            String sql = "select * from delete_for_sale_rent('"+real.getIdProperty().get()+"','"+ow.idProperty().get()+"','"+selectedItem.contractTypeProperty().get()+"')";
+            Class.forName(driverClassName);
+            dbConnection = DriverManager.getConnection(url,username,passwd);
+            try {
+                statement = dbConnection.createStatement();
+                rs = statement.executeQuery(sql);
+                returnState = true;
+            }catch (SQLException ex) {
+                ex.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return returnState;
+
+        }else return false;
+    }
+
+
+
+
+
+
+    public static Owners findOwner(String name) throws ClassNotFoundException, SQLException {
+        Class.forName(driverClassName);
+        dbConnection = DriverManager.getConnection(url,username,passwd);
+        try{
+            Owners ow = new Owners();
+            statement = dbConnection.createStatement();
+            rs = statement.executeQuery("select * from findowner('"+name+"')");
+            ResultSetMetaData rsMetadata = rs.getMetaData();
+            System.out.println(rsMetadata.getColumnCount());
+            while (rs.next()) {
+                ow.setId(rs.getString(1));
+                ow.setFullName(rs.getString(2));
+                ow.setPhone(rs.getString(3));
+                ow.setNumOfRealties(rs.getInt(4));
+            }
+            return ow;
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public static Realties findRealtie(String id) throws ClassNotFoundException, SQLException {
+        Class.forName(driverClassName);
+        dbConnection = DriverManager.getConnection(url,username,passwd);
+        try{
+            Realties real = new Realties();
+            statement = dbConnection.createStatement();
+            rs = statement.executeQuery("select * from findRealtie('"+id+"')");
+            ResultSetMetaData rsMetadata = rs.getMetaData();
+            System.out.println(rsMetadata.getColumnCount());
+            while (rs.next()) {
+                real.setIdProperty(rs.getString(1));
+                real.setAddressProperty(rs.getString(2));
+                real.setM2Property(rs.getFloat(3));
+                real.setR_typeProperty(rs.getString(4));
+            }
+            return real;
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
 }
 
 

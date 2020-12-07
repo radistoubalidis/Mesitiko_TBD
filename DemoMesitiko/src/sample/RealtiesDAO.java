@@ -69,6 +69,7 @@ public class RealtiesDAO {
                 statement = dbConnection.createStatement();
                 rs = statement.executeQuery(query);
                 returnState = true;
+
         }catch (SQLException ex) {
             ex.printStackTrace();
         } catch (Exception e) {

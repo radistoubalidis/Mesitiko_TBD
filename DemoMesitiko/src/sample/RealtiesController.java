@@ -23,7 +23,7 @@ public class RealtiesController {
         private  TableColumn<Realties,String> r_typeColumn;
 
         @FXML
-        private TextField newRealtieId, newRealtieAddress,newRealtieM2,newRealtieRtype;
+        private TextField newRealtieId, newRealtieAddress,newRealtieM2,newRealtieRtype,fsr_contractType;
 
         public TextField getNewRealtieId() {
                 return newRealtieId;
@@ -36,6 +36,11 @@ public class RealtiesController {
         public TextField getNewRealtieRtype() {
                 return newRealtieRtype;
         }
+
+        public TextField getFsr_contractType(){return fsr_contractType;}
+
+
+
 
         @FXML
         private Text insertMessage;

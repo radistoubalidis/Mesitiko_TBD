@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
@@ -274,6 +275,14 @@ public class Main extends Application {
                 classNotFoundException.printStackTrace();
             }
         });
+
+        //insert delete fsr
+        diathesimaCntrl.getInsertFSR().setOnAction(e ->{
+            insertFSR(diathesimaCntrl);
+        });
+
+
+
         // FOR_SALE_RENT EVENT HANDLING - end
 
 
@@ -328,14 +337,15 @@ public class Main extends Application {
 
         String [] pedia =   {realtiesCntrl.getNewRealtieId().getText()
                 ,realtiesCntrl.getNewRealtieAddress().getText()
-                ,realtiesCntrl.getNewRealtieRtype().getText()};
+                ,realtiesCntrl.getNewRealtieRtype().getText()
+                };
         String m2str = realtiesCntrl.getNewRealtieM2().getText();
         float m2_real = 0;
         try {
              m2_real = Float.parseFloat(m2str);
         }catch (NumberFormatException ex){
             realtiesCntrl.getInsertMessage().setText("ΠΑΡΑΚΑΛΩ ΒΑΛΤΕ ΑΡΙΘΜΟ ΓΙΑ Τ.Μ.");
-            realtiesCntrl.getInsertMessage().setStyle("-fx-background-color:#A91101");
+            realtiesCntrl.getInsertMessage().setStyle("-fx-fill : red");
             ex.printStackTrace();
         }
 
@@ -352,7 +362,7 @@ public class Main extends Application {
                 makeTextFade(message);
             }
             else {
-                realtiesCntrl.getInsertMessage().setStyle("-fx-background-color:red");
+                realtiesCntrl.getInsertMessage().setStyle("-fx-fill : red");
                 realtiesCntrl.getInsertMessage().setText("Η ΕΓΓΡΑΦΗ ΔΕΝ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ ΠΑΡΑΚΑΛΩ ΠΡΟΣΠΑΘΕΙΣΤΕ ΞΑΝΑ!");
                 Text message = realtiesCntrl.getInsertMessage();
                 makeTextFade(message);
@@ -377,7 +387,7 @@ public class Main extends Application {
                 makeTextFade(message);
 
             }else {
-                realtiesCntrl.getDeleteError().setStyle(" -fx-background-color : #A91101 ");
+                realtiesCntrl.getDeleteError().setStyle("-fx-fill : red");
                 realtiesCntrl.getDeleteError().setText("ΕΠΙΛΕΞΤΕ ΜΙΑ ΓΡΑΜΜΗ ΓΙΑ ΔΙΑΓΡΑΦΗ");
                 Text message = realtiesCntrl.getDeleteError();
                 makeTextFade(message);
@@ -408,7 +418,7 @@ public class Main extends Application {
                 Text message = contractsCntrl.getSqlError();
                 makeTextFade(message);
             }else {
-                contractsCntrl.getSqlError().setStyle("-fx-background-color:#A91101");
+                contractsCntrl.getSqlError().setStyle("-fx-fill : red");
                 contractsCntrl.getSqlError().setText("ΤΟ ΣΥΜΒΟΛΑΙΟ ΔΕΝ ΚΑΤΑΧΩΡΗΘΗΚΕ!\n ΚΑΠΟΙΟ ΣΤΟΙΧΕΙΟ ΕΙΝΑΙ ΛΑΘΟΣ");
                 Text message =  contractsCntrl.getSqlError();
                 makeTextFade(message);
@@ -430,7 +440,7 @@ public class Main extends Application {
                 message.setText("ΤΟ ΣΥΜΒΟΛΑΙΟ ΔΙΑΓΡΑΦΤΗΚΕ ΕΠΟΤΥΧΩ΅!");
                 makeTextFade(message);
             }else{
-                contractsCntrl.getSqlError().setStyle(" -fx-background-color : #A91101 ");
+                contractsCntrl.getSqlError().setStyle(" -fx-fill : red ");
                 contractsCntrl.getSqlError().setText("ΕΠΙΛΕΞΤΕ ΜΙΑ ΓΡΑΜΜΗ ΓΙΑ ΔΙΑΓΡΑΦΗ");
                 Text message = contractsCntrl.getSqlError();
                 makeTextFade(message);
@@ -459,7 +469,7 @@ public class Main extends Application {
                 Text message = customersCntrl.getInsertError();
                 makeTextFade(message);
             }else {
-                customersCntrl.getInsertError().setStyle("-fx-background-color:#A91101");
+                customersCntrl.getInsertError().setStyle("-fx-fill : red");
                 customersCntrl.getInsertError().setText("ΠΑΡΑΚΑΛΩ ΕΙΣΑΓΕΤΑΙ ΣΩΣΤΑ ΤΑ ΣΤΟΙΧΕΙΑ");
                 Text message = customersCntrl.getInsertError();
                 makeTextFade(message);
@@ -484,7 +494,7 @@ public class Main extends Application {
                 makeTextFade(message);
 
             } else {
-                customersCntrl.getDeleteError().setStyle("-fx-background-color : #A91101 ");
+                customersCntrl.getDeleteError().setStyle("-fx-fill : red ");
                 customersCntrl.getDeleteError().setText("ΠΑΡΑΚΑΛΩ ΔΙΑΛΕΞΤΕ ΓΡΑΜΜΗ ΓΙΑ ΔΙΑΓΡΑΦΗ");
                 Text message = customersCntrl.getDeleteError();
                 makeTextFade(message);
@@ -517,7 +527,7 @@ public class Main extends Application {
                  Text message = ownersCntrl.getInsertError();
                  makeTextFade(message);
              }else {
-                 ownersCntrl.getInsertError().setStyle("-fx-background-color : #A91101");
+                 ownersCntrl.getInsertError().setStyle("-fx-fill : red");
                  ownersCntrl.getInsertError().setText("ΠΑΡΑΚΑΛΩ ΣΥΜΠΛΗΡΩΣΤΕ ΤΑ ΣΤΟΙΧΕΙΑ ΣΩΣΤΑ");
                  Text message = ownersCntrl.getInsertError();
                  makeTextFade(message);
@@ -542,9 +552,60 @@ public class Main extends Application {
                 makeTextFade(message);
             }
             else{
-                ownersCntrl.getDeleteError().setStyle("-fx-background-color : #A91101 ");
+                ownersCntrl.getDeleteError().setStyle("-fx-fill : red ");
                 ownersCntrl.getDeleteError().setText("ΠΑΡΑΚΑΛΩ ΔΙΑΛΕΞΤΕ ΓΡΑΜΜΗ ΓΙΑ ΔΙΑΓΡΑΦΗ");
                 Text message = ownersCntrl.getDeleteError();
+                makeTextFade(message);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void insertFSR (For_sale_rentController diathesimaCntrl){
+        String ownersName = diathesimaCntrl.getOwnerNameInput().getText();
+        String realtie_id = diathesimaCntrl.getRealtie_idInput().getText();
+        String contractType = diathesimaCntrl.getContractTypeInput().getText();
+
+        try{
+            boolean result = diathesimaCntrl.insert(ownersName,realtie_id,contractType);
+            if(result){
+                diathesimaCntrl.getSqlMessage().setText("Η ΕΓΓΡΑΦΗ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ!");
+                Text message = diathesimaCntrl.getSqlMessage();
+                makeTextFade(message);
+                diathesimaCntrl.getContractTypeInput().setText("");
+                diathesimaCntrl.getOwnerNameInput().setText("");
+                diathesimaCntrl.getRealtie_idInput().setText("");
+            }else {
+                diathesimaCntrl.getSqlMessage().setStyle("-fx-fill : red");
+                diathesimaCntrl.getSqlMessage().setText("Η ΕΓΓΡΑΦΗ ΔΕΝ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ ΒΑΛΤΕ ΣΩΣΤΑ ΤΑ ΣΤΟΙΧΕΙΑ");
+                Text message = diathesimaCntrl.getSqlMessage();
+                makeTextFade(message);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void deleteFSR(For_sale_rentController diathesimaCntrl){
+        For_sale_rent selctedItem = diathesimaCntrl.getFor_sale_rentView().getSelectionModel().getSelectedItem();
+
+        try {
+            boolean result = diathesimaCntrl.delete(selctedItem);
+            if(result){
+                diathesimaCntrl.getSqlMessage().setText("Η ΔΙΑΓΡΑΦΗ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ");
+                Text message = diathesimaCntrl.getSqlMessage();
+                makeTextFade(message);
+            }else {
+                diathesimaCntrl.getSqlMessage().setStyle("-fx-fill : red");
+                diathesimaCntrl.getSqlMessage().setText("ΕΠΙΛΕΞΤΕ ΜΙΑ ΓΡΑΜΜΗ ΓΙΑ ΔΙΑΓΡΑΦΗ");
+                Text message = diathesimaCntrl.getSqlMessage();
                 makeTextFade(message);
             }
         } catch (SQLException e) {

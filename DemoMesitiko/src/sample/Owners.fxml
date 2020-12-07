@@ -48,25 +48,25 @@
                   </Text>
                   <AnchorPane prefHeight="286.0" prefWidth="545.0">
                      <children>
-                        <Button fx:id="deleteButton" alignment="CENTER_RIGHT" layoutX="492.0" layoutY="215.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #9C2B27;" text="Delete" textFill="WHITE">
+                        <Button fx:id="deleteButton" alignment="CENTER_RIGHT" layoutX="506.0" layoutY="196.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #9C2B27;" text="Delete" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
                         <TextField fx:id="idColumnInput" layoutX="45.0" layoutY="15.0" prefHeight="30.0" prefWidth="535.0" promptText="ID" />
                         <TextField fx:id="nameColumnInput" layoutX="45.0" layoutY="58.0" prefHeight="30.0" prefWidth="535.0" promptText="Full Name" />
-                        <Button fx:id="insertButton" alignment="CENTER_RIGHT" layoutX="359.0" layoutY="215.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #9C2B27;" text="Add Data" textFill="WHITE">
+                        <Button fx:id="insertButton" alignment="CENTER_RIGHT" layoutX="384.0" layoutY="196.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #9C2B27;" text="Add Data" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
                         <TextField fx:id="numOfRealtiesColumnInput" layoutX="45.0" layoutY="151.0" prefHeight="30.0" prefWidth="535.0" promptText="Realtie's Number" />
-                        <Label layoutX="365.0" layoutY="215.0" prefHeight="11.0" prefWidth="0.0" text="+" textFill="WHITE">
+                        <Label layoutX="384.0" layoutY="197.0" prefHeight="11.0" prefWidth="0.0" text="+" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="26.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="495.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="506.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/delete.png" />
                            </image>
