@@ -64,12 +64,12 @@
                         <Font size="18.0" />
                      </font>
                   </RadioButton>
-                  <Text fx:id="insertMessage" fill="#00ff0d" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="406.13671875" AnchorPane.leftAnchor="20.0">
+                  <Text fx:id="insertMessage" fill="#00ff0d" layoutX="18.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="406.13671875" AnchorPane.leftAnchor="18.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="deleteError" fill="#1deb19" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="395.13671875" AnchorPane.leftAnchor="20.0">
+                  <Text fx:id="deleteError" fill="#1deb19" layoutX="24.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="395.13671875" AnchorPane.leftAnchor="24.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -99,7 +99,7 @@
                         <Image url="@../images/type.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="580.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="580.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/delete.png" />
                      </image>

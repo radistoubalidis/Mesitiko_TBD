@@ -51,9 +51,9 @@ public class For_sale_rentDAO {
     }
 
     public static ObservableList<For_sale_rent> filterBy(String epilogh) throws SQLException,ClassNotFoundException {
+        String query = "Select * from filterContract('"+epilogh+"')";
         if (epilogh.equals("RENT")) {
             try {
-                String query = "Select * from FSR_EXTENDED where contract_type='RENT'";
                 Class.forName(driverClassName);
                 dbConnection = DriverManager.getConnection(url, username, passwd);
                 statement = dbConnection.createStatement();
@@ -73,7 +73,6 @@ public class For_sale_rentDAO {
             }
         } else if (epilogh.equals("SALE")) {
             try {
-                String query = "Select * from FSR_EXTENDED where contract_type='SALE'";
                 Class.forName(driverClassName);
                 dbConnection = DriverManager.getConnection(url, username, passwd);
                 statement = dbConnection.createStatement();
@@ -115,9 +114,7 @@ public class For_sale_rentDAO {
                 Class.forName(driverClassName);
                 dbConnection = DriverManager.getConnection(url, username, passwd);
                 statement = dbConnection.createStatement();
-                rs = statement.executeQuery("select * " +
-                        "from FSR_EXTENDED " +
-                        "where realtie_id not in (select realtie_id from contracts)");
+                rs = statement.executeQuery("select * FROM filterAvailable()");
                 ObservableList fsrList = FXCollections.observableArrayList();
                 while (rs.next()) {
                     For_sale_rent fsr = new For_sale_rent();

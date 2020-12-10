@@ -103,8 +103,9 @@ public class RealtiesDAO {
 
     public static ObservableList<Realties> filterBy(@NotNull String pedio) throws ClassNotFoundException,SQLException{
 
+        String query = "Select * from filterRealtie('"+pedio+"')";
         if(pedio.equals("ΔΙΑΜΕΡΙΣΜΑΤΑ")){
-            String query = "Select * from realties where r_type='ΔΙΑΜΕΡΙΣΜΑ'";
+
             try{
                         Class.forName(driverClassName);
                         dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -126,7 +127,6 @@ public class RealtiesDAO {
                    }
 
         }else if (pedio.equals("ΜΟΝΟΚΑΤΟΙΚΙΕΣ")){
-                    String query = "Select * from realties where r_type='ΜΟΝΟΚΑΤΟΙΚΙΑ'";
                     try{
                         Class.forName(driverClassName);
                         dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -147,7 +147,6 @@ public class RealtiesDAO {
                         throw e;
                     }
         }else if(pedio.equals("ΒΙΛΛΕΣ")){
-                    String query = "Select * from realties where r_type='ΒΙΛΛΑ'";
                     try{
                         Class.forName(driverClassName);
                         dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -168,7 +167,6 @@ public class RealtiesDAO {
                         throw e;
                     }
         }else if (pedio.equals("ΕΠΑΓΓΕΛΜΑΤΙΚΟΙ ΧΩΡΟΙ ")){
-                    String query = "Select * from realties where r_type='ΕΠΑΓΓΕΛΜΑΤΙΚΟΣ ΧΩΡΟΣ'";
                     try{
                         Class.forName(driverClassName);
                         dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -189,7 +187,6 @@ public class RealtiesDAO {
                         throw e;
                     }
         }else if(pedio.equals("ΓΗ")){
-                    String query = "Select * from realties where r_type='ΓΗ'";
                     try{
                         Class.forName(driverClassName);
                         dbConnection = DriverManager.getConnection (url, username, passwd);
