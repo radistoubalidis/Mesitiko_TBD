@@ -152,7 +152,7 @@ SELECT * FROM FSR_EXTENDED;
 
 
 ==================================================================================================================
-LogFile
+LogFile for table Owners
 -------
 Create Log Array
 ----------------
@@ -374,3 +374,38 @@ select * from realties
 $BODY$
   LANGUAGE sql VOLATILE 
   =====================================================
+  
+  functions filterBY (dynamic queries)
+  
+  CREATE OR REPLACE FUNCTION filterrealtie(character varying)
+  RETURNS SETOF realties AS
+	$BODY$
+	Select * from realties where r_type=$1;
+	$BODY$
+  LANGUAGE sql VOLATILE
+  
+  --------------------------
+  
+  CREATE OR REPLACE FUNCTION filteravailable()
+  RETURNS SETOF fsr_extended AS
+$BODY$
+Select * from FSR_EXTENDED where realtie_id not in (select realtie_id from contracts)
+$BODY$
+  LANGUAGE sql VOLATILE
+  
+  --------------------------------
+  
+  CREATE OR REPLACE FUNCTION filtercontract(character varying)
+  RETURNS SETOF fsr_extended AS
+$BODY$
+Select * from FSR_EXTENDED where contract_type=$1;
+$BODY$
+  LANGUAGE sql VOLATILE
+  
+  
+  
+  
+  
+  
+  
+  
