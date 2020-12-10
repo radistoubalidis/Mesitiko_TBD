@@ -343,6 +343,34 @@ $BODY$
   LANGUAGE sql VOLATILE
  
 ================================================================================
+Functions for display
 
+CREATE OR REPLACE FUNCTION displaycon()
+  RETURNS SETOF contract_names AS
+$BODY$
+select * from contract_names
+$BODY$
+  LANGUAGE sql VOLATILE
+  
+  CREATE OR REPLACE FUNCTION displaycust()
+  RETURNS SETOF customers AS
+$BODY$
+select * from customers
+$BODY$
+  LANGUAGE sql VOLATILE
+ 
 
-
+CREATE OR REPLACE FUNCTION displayfsr()
+  RETURNS SETOF fsr_extended AS
+$BODY$
+select * from FSR_EXTENDED
+$BODY$
+  LANGUAGE sql VOLATILE
+  
+ CREATE OR REPLACE FUNCTION displayr()
+  RETURNS SETOF realties AS
+$BODY$
+select * from realties
+$BODY$
+  LANGUAGE sql VOLATILE 
+  =====================================================
