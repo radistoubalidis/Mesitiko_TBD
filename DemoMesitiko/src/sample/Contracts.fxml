@@ -30,12 +30,12 @@
             <TextField fx:id="dateInput" layoutX="51.0" layoutY="441.0" prefHeight="30.0" prefWidth="492.0" promptText="Date" />
             <TextField fx:id="realtie_idNameInput" layoutX="51.0" layoutY="400.0" prefHeight="30.0" prefWidth="492.0" promptText="Realtie's ID" />
             <TextField fx:id="ownerNameInput" layoutX="51.0" layoutY="364.0" prefHeight="30.0" prefWidth="492.0" promptText="Owner's Name" />
-            <Button fx:id="insertContract" alignment="CENTER_RIGHT" layoutX="341.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="106.0" style="-fx-background-color: #9C2B27;" text="Add Data" textFill="WHITE">
+            <Button fx:id="insertContract" alignment="CENTER_RIGHT" layoutX="341.0" layoutY="514.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #9C2B27;" text="Add Data" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="deleteButton" alignment="CENTER_RIGHT" layoutX="454.0" layoutY="514.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #9C2B27;" text="Delete" textFill="WHITE">
+            <Button fx:id="deleteButton" alignment="CENTER_RIGHT" layoutX="454.0" layoutY="514.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #9C2B27;" text="Delete" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
