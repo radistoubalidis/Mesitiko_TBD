@@ -359,13 +359,6 @@ select * from customers
 $BODY$
   LANGUAGE sql VOLATILE
  
- 
- CREATE OR REPLACE FUNCTION displayfsr()
-  RETURNS SETOF fsr_extended AS
-$BODY$
-select * from FSR_EXTENDED
-$BODY$
-  LANGUAGE sql VOLATILE
 
 CREATE OR REPLACE FUNCTION displayfsr()
   RETURNS SETOF fsr_extended AS
