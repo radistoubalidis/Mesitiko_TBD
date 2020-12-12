@@ -110,7 +110,7 @@ public class RealtiesDAO {
                         Class.forName(driverClassName);
                         dbConnection = DriverManager.getConnection (url, username, passwd);
                         statement = dbConnection.createStatement();
-                        rs = statement.executeQuery(query);
+                        rs = statement.executeQuery("Select * from filterRealtie('ΔΙΑΜΕΡΙΣΜΑ')");
                         ObservableList realtiesList = FXCollections.observableArrayList();
                         while(rs.next()){
                           Realties real = new Realties();
@@ -131,7 +131,7 @@ public class RealtiesDAO {
                         Class.forName(driverClassName);
                         dbConnection = DriverManager.getConnection (url, username, passwd);
                         statement = dbConnection.createStatement();
-                        rs = statement.executeQuery(query);
+                        rs = statement.executeQuery("Select * from filterRealtie('ΜΟΝΟΚΑΤΟΙΚΙΑ')");
                         ObservableList realtiesList = FXCollections.observableArrayList();
                         while(rs.next()){
                             Realties real = new Realties();
@@ -151,7 +151,7 @@ public class RealtiesDAO {
                         Class.forName(driverClassName);
                         dbConnection = DriverManager.getConnection (url, username, passwd);
                         statement = dbConnection.createStatement();
-                        rs = statement.executeQuery(query);
+                        rs = statement.executeQuery("select * from filterRealtie('ΒΙΛΛΑ')");
                         ObservableList realtiesList = FXCollections.observableArrayList();
                         while(rs.next()){
                             Realties real = new Realties();
@@ -171,7 +171,7 @@ public class RealtiesDAO {
                         Class.forName(driverClassName);
                         dbConnection = DriverManager.getConnection (url, username, passwd);
                         statement = dbConnection.createStatement();
-                        rs = statement.executeQuery(query);
+                        rs = statement.executeQuery("Select * from filterRealtie('ΕΠΑΓΓΕΛΜΑΤΙΚΟΣ ΧΩΡΟΣ')");
                         ObservableList realtiesList = FXCollections.observableArrayList();
                         while(rs.next()){
                             Realties real = new Realties();
