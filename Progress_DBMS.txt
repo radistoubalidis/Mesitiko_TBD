@@ -389,7 +389,8 @@ $BODY$
   CREATE OR REPLACE FUNCTION filteravailable()
   RETURNS SETOF fsr_extended AS
 $BODY$
-Select * from FSR_EXTENDED where realtie_id not in (select realtie_id from contracts)
+Select * from FSR_EXTENDED 
+where realtie_id not in (select realtie_id from contracts)
 $BODY$
   LANGUAGE sql VOLATILE
   
