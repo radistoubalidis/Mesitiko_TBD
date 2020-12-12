@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OwnersController">
    <children>
@@ -22,13 +31,13 @@
                               <TableColumn fx:id="numOfRealtiesColumn" prefWidth="115.00004882812505" text="Realtie's Number" />
                            </columns>
                         </TableView>
-                        <Text fx:id="insertError" fill="#1dff00" layoutX="53.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="447.13671875">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
                      </children>
                   </AnchorPane>
+                  <Text fx:id="insertError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="447.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
                   <Text fx:id="deleteError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="402.73681640625">
                      <font>
                         <Font size="18.0" />
@@ -52,9 +61,9 @@
                            </font>
                         </Button>
                         <TextField fx:id="numOfRealtiesColumnInput" layoutX="45.0" layoutY="151.0" prefHeight="30.0" prefWidth="535.0" promptText="Realtie's Number" />
-                        <Label layoutX="384.0" layoutY="197.0" prefHeight="38.0" prefWidth="17.0" text="+" textFill="WHITE">
+                        <Label layoutX="390.0" layoutY="198.0" prefHeight="29.0" prefWidth="17.0" text="+" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="26.0" />
+                              <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
                         <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="506.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">

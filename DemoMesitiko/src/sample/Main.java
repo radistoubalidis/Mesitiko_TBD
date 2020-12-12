@@ -343,13 +343,14 @@ public class Main extends Application {
         float m2_real = 0;
         try {
              m2_real = Float.parseFloat(m2str);
+             // error handling αν δεν εισαγει ααριθμο στο πεδιο ματραγωνικα μετρα
         }catch (NumberFormatException ex){
             realtiesCntrl.getInsertMessage().setText("ΠΑΡΑΚΑΛΩ ΒΑΛΤΕ ΑΡΙΘΜΟ ΓΙΑ Τ.Μ.");
             realtiesCntrl.getInsertMessage().setStyle("-fx-fill : red");
             ex.printStackTrace();
         }
-
-
+        //ΕΔΩ ΜΕΣΑ ΣΤΗΝ TRY-CATCH ΚΑΛΕΙΤΑΙ ΜΙΑ ΜΕΘΟΔΟΣ ΤΟΥ CONTROLLER Η ΟΠΟΙΑ ΚΑΛΕΙ ΤΗΝ ΜΕΘΟΔΟ
+        // INSERT ΑΠΟ ΤΗΝ ΚΛΑΣΗ REALTIESDAO ΠΟΥ ΕΠΙΚΟΙΝΩΝΕΙ ΜΕ ΤΗΝ ΒΑΣΗ ΚΑΙ ΕΚΤΕΛΕΙ ΤΗΝ ΕΙΣΑΓΩΓΗ/ΔΙΑΓΡΑΦΗ/DYNAMIC QUERY
         try {
             boolean result = realtiesCntrl.insert(pedia,m2_real);
             if (result) {
@@ -357,6 +358,8 @@ public class Main extends Application {
                 realtiesCntrl.getNewRealtieAddress().setText("");
                 realtiesCntrl.getNewRealtieM2().setText("");
                 realtiesCntrl.getNewRealtieRtype().setText("");
+                realtiesCntrl.getInsertMessage().setStyle("-fx-fill:green");
+                realtiesCntrl.getInsertMessage().setText("Η ΕΓΓΡΑΦΗ ΠΡΑΓΜΑΤΟΠΟΙΗΘΗΚΕ!");
 
                 Text message = realtiesCntrl.getInsertMessage();
                 makeTextFade(message);

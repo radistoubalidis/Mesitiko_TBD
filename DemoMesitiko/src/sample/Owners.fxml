@@ -31,13 +31,13 @@
                               <TableColumn fx:id="numOfRealtiesColumn" prefWidth="115.00004882812505" text="Realtie's Number" />
                            </columns>
                         </TableView>
-                        <Text fx:id="insertError" fill="#1dff00" layoutX="53.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="447.13671875">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
                      </children>
                   </AnchorPane>
+                  <Text fx:id="insertError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="447.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
                   <Text fx:id="deleteError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="402.73681640625">
                      <font>
                         <Font size="18.0" />

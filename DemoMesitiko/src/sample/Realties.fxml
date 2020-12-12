@@ -72,7 +72,7 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="deleteError" fill="#1deb19" layoutX="24.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="395.13671875" AnchorPane.leftAnchor="24.0">
+                  <Text fx:id="deleteError" fill="#1deb19" layoutX="14.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="395.13671875" AnchorPane.leftAnchor="14.0">
                      <font>
                         <Font size="18.0" />
                      </font>
